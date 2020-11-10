@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+</head>
+<body>
+<header>
+    <a href="#home"><img src="pics/logo.png" alt = "this is the logo" width="100"></a>
+</header>
+
+<body>
+<form action = "">
+
+	 <fieldset>
+		
+        <legend id = "QS" >Quick Search</legend>
+        
+        <input id = "address" value = "landlord"/>
+        
+        <button type="button" onclick=addr_search()> check </button>
+       
+       <br/>
+	
+    </fieldset>
+
+</form>
+	<fieldset>
+
+        <legend>Advance Search</legend>
+
+        <label>Apartment Size</label>
+
+        <br/>
+
+        <select name = "size">
+
+               <option value = "studio"> 1 1/2</option>
+			   <option value = "apartment"> 2 1/2</option>
+        	   <option value = "apartment"> 3 1/2</option>
+        	   <option value = "apartment"> 4 1/2</option>
+        	   <option value = "apartment"> 5 1/2</option>
+        	   <option value = "apartment"> 6 1/2</option>
+        </select>
+
+                <br/>
+
+        <br/>
+
+        <label>Rental Term:
+
+        <br/>
+
+        <input type = "radio" name = "term" value = "st" checked/>short term</label><br/>
+
+        <label><input type = "radio" name = "term" value = "lt">long term</label><br/>
+        <label><input type = "radio" name = "term" value = "OT">other: </label><br/>
+       	<input type = "text" name = "term" value = "3 months"> 
+        <br/>
+        <br/>
+
+        <label>Features:
+
+        <br/>
+
+        <input type = "checkbox" name = "f" value = "bl" checked/>balcony</label>
+
+        <label><input type = "checkbox" name = "f" value = "hf">high floor</label>
+
+        <label><input type = "checkbox" name = "f" value = "PL">elevator</label>
+		
+        <label><input type = "checkbox" name = "f" value = "SE">security</label>
+        
+        <label><input type = "checkbox" name = "f" value = "PS">parking spot</label>
+        <br/>
+		<br/>
+    	
+        <label>Inclued: </label>
+    	<br/>
+        <label><input type = "checkbox" name = "f" value = "EL">electronic</label>
+    	<label><input type = "checkbox" name = "f" value = "WA" checked/>water</label>	
+    	<br/><br/>
+    	
+        <label>Expected Rent: </label>
+    	<br/>
+        <input type = "text"  value = "500$"></label>
+    	<br/><br/>
+    	
+        <label>Gender
+
+        <br/>
+
+        <input type = "radio"  checked/>male</label><br/>
+
+        <label><input type = "radio">female</label><br/>
+        <br/>
+       
+       <label>Age:
+
+        <br/>
+
+        <input type = "radio"  checked/>old</label><br/>
+
+        <label><input type = "radio" >young</label><br/>
+        <label><input type = "radio" >other: </label><br/>
+       	<input type = "text" value = "20">years old 
+        <br/>
+        <br/>
+        
+        <label>Personalities Of Landlord:
+
+        <br/>
+
+        <input type = "checkbox"  checked/>kind</label>
+
+        <label><input type = "checkbox"  >strict</label>
+
+        <label><input type = "checkbox" >easy-going</label>
+		
+        <label><input type = "checkbox"  >straightforward</label>
+        
+        <label><input type = "checkbox"  >gentle</label>
+        <br/>
+		<br/>
+    
+    	<label>The Nationality Of Landlord: </label>
+    	<br/>
+        <input type = "text"  value = "Canada"></label>
+    	<br/><br/>
+        
+        <label>Apartment Address: </label>
+    	<br/>
+        <input type = "text"  value = "2540 rue onratio, Montreal, QC" id = "address"></label>
+    	<br/><br/>
+    
+    	<input type="submit" value="Submit">
+		<input type="reset" value="Start Over">
+    <style>
+    	legend{color: red; font-weight: bold }
+    	#address{ width: 300px}
+    </style>
+
+
+</body>
+
+</html>
