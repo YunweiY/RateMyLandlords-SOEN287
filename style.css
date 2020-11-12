@@ -88,10 +88,10 @@ footer a:hover{
     text-align: center;
 }
 p{
-    font-family: "Comic Sans MS";
+    font-family: Calibri;
     font-size: 100px;
 }
-#frontPageBut {
+.frontPageBut {
     border-radius: 20%;
     border: 5px double grey;
     color: #3c4359;
