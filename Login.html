@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <title>Log in</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
 </head>
 <body>
 <nav>
     <a href="FrontPage.html" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.html">Home</a>
-    <a href="Review.html">Review</a>
     <a href="MyAccount.html">My account</a>
     <a href="Search.html">Search</a>
-    <button><a href="Signup.html">Sign up</a></button>
-    <button><a href="Login.html">Log in</a></button>
+    <a href="Login.html" id="login">Log in/Sign up</a>
 </nav>
 <main>
-    <div id="loginBox">
+    <fieldset id="loginBox">
     <label><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username"><br/>
     <label><b>Password</b></label>
@@ -27,12 +24,11 @@
     </label></br>
     <button type="submit">Login</button>
     <button type="button">Cancel</button><br/>
-        <br/>
         <span id="password">
             <a href="#">Forgot password?</a><br/>
-            <a href="Signup.html">Don't have an account? Sign up now!</a>
+            <a href="#">Do not have an account? Sign up now!</a>
         </span>
-    </div>
+    </fieldset>
 </main>
 <footer>
     <table>
@@ -40,7 +36,7 @@
             <td>By Happy Web Programming team(No. 19)</td>
         </tr>
         <tr>
-            <td><a href="ContactUs.html">Contact us</a></td>
+            <td><a href="Contact_us.html">Contact us</a></td>
         </tr>
     </table>
 </footer>
