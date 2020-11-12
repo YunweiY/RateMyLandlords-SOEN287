@@ -69,9 +69,10 @@ footer a:hover{
 }
 #loginBox{
     color: #3c4359;
-    margin: 150px 500px;
     padding: 50px;
     text-align: center;
+    margin: 10% 30%;
+    border: solid #3c4359;
 }
 #loginBox a {
     text-decoration: none;
@@ -98,6 +99,7 @@ footer a:hover{
     font-family: Calibri;
     font-size: 50px;
     text-align: center;
+    padding: 20px;
 }
 #introduction a{
     text-decoration: none;
@@ -108,8 +110,8 @@ footer a:hover{
     border-radius: 20px;
     color: #3c4359;
     background-color: goldenrod;
-    width: 500px;
-    height: 40px;
+    width: 60%;
+    height: fit-content;
     font-size: 30px;
     margin-bottom: 20px;
 }
@@ -133,4 +135,45 @@ legend{
     margin-left: 400px;
     background-color: #3c4359;
     color: #f2f2f2;
+}
+/*review page*/
+#review{
+    text-align: center;
+}
+/*contact us page*/
+#centerForContactUs {
+    font-size: 50px;
+    text-align: center;
+    color: #3c4359;
+}
+#fieldsetForContactUs {
+    background-color: #b3d4fc;
+}
+#smallWordsForContactUs {
+    text-align: center;
+    color: #3c4359;
+    font-size: 25px;
+}
+.contactInfo {
+    border-color: #b3d4fc;
+    border-radius: 30px;
+    width: 200px;
+    height: 50px;
+}
+#userOpinion {
+    font-size: 15px;
+    border-color: #b3d4fc;
+    border-radius: 10px;
+    width: 400px;
+    height: 250px;
+}
+#contactUsBut {
+    font-size: 18px;
+    border-radius: 90px;
+    size: 50px;
+    background-color: lavender;
+}
+#robotChecking {
+    border-color: #b3d4fc;
+    border-radius: 30px;
 }

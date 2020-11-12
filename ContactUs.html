@@ -1,54 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        #centerForContactUs {
-            font-size: 50px;
-            text-align: center;
-            color: #3c4359;
-        }
-
-        #fieldsetForContactUs {
-            background-color: #b3d4fc;
-        }
-
-        #smallWordsForContactUs {
-            text-align: center;
-            color: #3c4359;
-            font-size: 25px;
-        }
-
-        .contactInfo {
-            border-color: #b3d4fc;
-            border-radius: 30px;
-            width: 200px;
-            height: 50px;
-        }
-
-        #userOpinion {
-            font-size: 15px;
-            border-color: #b3d4fc;
-            border-radius: 10px;
-            width: 400px;
-            height: 250px;
-        }
-
-        #contactUsBut {
-            font-size: 18px;
-            border-radius: 90px;
-            size: 50px;
-            background-color: lavender;
-        }
-
-        #robotChecking {
-            border-color: #b3d4fc;
-            border-radius: 30px;
-        }
-        
-        #tableForContactUs{
-        }
-        
-    </style>
     <meta charset="UTF-8">
     <title>Contact Us</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -56,7 +8,7 @@
 <body>
 <nav>
     <a href="FrontPage.html" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
-    <a href="FrontPage.html" class="active">Home</a>
+    <a href="FrontPage.html">Home</a>
     <a href="Review.html">Review</a>
     <a href="MyAccount.html">My account</a>
     <a href="Search.html">Search</a>
@@ -71,24 +23,27 @@
 <br/>
 <table id="tableForContactUs" align="center">
     <tr>
-        <td><label><input class="contactInfo" type = "text" placeholder="Last name"></label></td>
-        <td><label><input class="contactInfo" type = "text" placeholder="First name"></label></td>
+        <td><label><input class="contactInfo" type="text" placeholder="Last name"></label></td>
+        <td><label><input class="contactInfo" type="text" placeholder="First name"></label></td>
     </tr>
     <tr>
-        <td><label><input class="contactInfo" type = "text" placeholder="Email address"></label></td>
-        <td><label><input class="contactInfo" type = "text" placeholder="Phone number"></label></td>
+        <td><label><input class="contactInfo" type="text" placeholder="Email address"></label></td>
+        <td><label><input class="contactInfo" type="text" placeholder="Phone number"></label></td>
     </tr>
 </table>
 
 <br/><br/>
 
-<center><label><textarea id="userOpinion" type = "text" placeholder="Why are you trying to contact us?"></textarea></label></center>
-    <br/><br/>
+<center><label><textarea id="userOpinion" type="text"
+                         placeholder="Why are you trying to contact us?"></textarea></label></center>
+<br/><br/>
 
-    <center>Are you a robot?</center>
-    <center><label><input id="robotChecking" type = "text" placeholder="Say 'No'"></label></center>
-    <br/>
-    <center><button id="contactUsBut">Send to us!</button></center>
+<center>Are you a robot?</center>
+<center><label><input id="robotChecking" type="text" placeholder="Say 'No'"></label></center>
+<br/>
+<center>
+    <button id="contactUsBut">Send to us!</button>
+</center>
 
 <br/><br/>
 
