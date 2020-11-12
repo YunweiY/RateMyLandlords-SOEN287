@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>search</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
 </head>
 <body>
     <nav>
-    <a href="FrontPage.html" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
-    <a href="FrontPage.html">Home</a>
-    <a href="MyAccount.html">My account</a>
-    <a href="Search.html">Search</a>
-    <a href="Login.html" id="login">Log in/Sign up</a>
-</nav>
+        <a href="FrontPage.html" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
+        <a href="FrontPage.html">Home</a>
+        <a href="Review.html">Review</a>
+        <a href="MyAccount.html">My account</a>
+        <a href="Search.html" class="active">Search</a>
+        <button><a href="Signup.html">Sign up</a></button>
+        <button><a href="Login.html">Log in</a></button>
+    </nav>
     <form action = "">
 
 	 <fieldset>
@@ -58,7 +61,7 @@
 
         <label><input type = "radio" name = "term" value = "lt">long term</label><br/>
         <label><input type = "radio" name = "term" value = "OT">other: </label><br/>
-       	<input type = "text" name = "term" value = "3 months"> 
+       	<input type = "text" name = "term" placeholder = "3 months">
         <br/>
         <br/>
 
@@ -86,7 +89,7 @@
     	
         <label>Expected Rent: </label>
     	<br/>
-        <input type = "text"  value = "500$"></label>
+        <input type = "text"  placeholder = "500$"></label>
     	<br/><br/>
     	
         <label>Gender
@@ -106,7 +109,7 @@
 
         <label><input type = "radio" name= "age" >young</label><br/>
         <label><input type = "radio" name= "age">other: </label><br/>
-       	<input type = "text" value = "20">years old 
+       	<input type = "text" placeholder = "20">years old
         <br/>
         <br/>
         
@@ -128,12 +131,12 @@
     
     	<label>The Nationality Of Landlord: </label>
     	<br/>
-        <input type = "text"  value = "Canada"></label>
+        <input type = "text"  placeholder = "Canada"></label>
     	<br/><br/>
         
         <label>Apartment Address: </label>
     	<br/>
-        <input type = "text"  value = "2540 rue onratio, Montreal, QC" id = "address"></label>
+        <input type = "text"  placeholder = "2540 rue onratio, Montreal, QC" id = "address"></label>
     	<br/><br/>
     
     	<a href="Results.html"><input type="submit" value="Submit">
@@ -145,7 +148,8 @@
             <td>By Happy Web Programming team(No. 19)</td>
         </tr>
         <tr>
-			<td><a href="Contact_us.html">Contact us</a></td>
+            <td><a href="ContactUs.html">Contact us</a></td>
+			<td><a href="Contact_us.html">Contact_us</a></td>
         </tr>
     </table>
 </footer>

@@ -1,3 +1,10 @@
+body{
+    font-family: Merriweather;
+}
+button{
+    font-family: Merriweather;
+}
+/*navigation bar*/
 nav {
     left: 0;
     right: 0;
@@ -5,7 +12,6 @@ nav {
     background-color: #3c4359;
     overflow: hidden;
 }
-
 nav a {
     float: left;
     color: #f2f2f2;
@@ -14,22 +20,39 @@ nav a {
     text-decoration: none;
     font-size: 28px;
 }
-
 nav a:hover {
     background-color: #ddd;
     color: #3c4359;
 }
-
 nav a.active {
-    background-color: #4CAF50;
+    background-color: Goldenrod;
     color: #f2f2f2;
 }
-
 #logo {
-    background-color: #3c4359;
-    color: #3c4359;
+    background-color: transparent;
 }
-
+nav button {
+    margin-top:15px;
+    margin-left: 5px;
+    margin-right:5px;
+    border-radius: 20px;
+    float:right;
+    background-color: goldenrod;
+    color: #f2f2f2;
+    height: 40px;
+}
+nav button:hover{
+    box-shadow: 0 0 5px #f2f2f2;
+}
+nav button a{
+    margin-top:-10px;
+    font-size: 18px;
+}
+nav button a:hover{
+    background-color: transparent;
+    color: #f2f2f2;
+}
+/*footer*/
 footer {
     left: 0;
     right: 0;
@@ -39,88 +62,135 @@ footer {
     background-color: #3c4359;
     color: #f2f2f2;
 }
-
 footer a{
     color: #f2f2f2;
     text-decoration: none;
 }
-
 footer a:hover{
     text-decoration: underline;
 }
-
+/*login page*/
 #login{
     float:right;
 }
-
 #loginBox{
     color: #3c4359;
-    margin: 100px 500px;
     padding: 50px;
     text-align: center;
+    margin: 10% 30%;
+    border: solid #3c4359;
 }
-
 #loginBox a {
     text-decoration: none;
     color: #3c4359;
 }
-
 #loginBox a:hover {
     text-decoration: underline;
 }
-
-#login:hover{
-    background-color: #3c4359;
-    color: #f2f2f2;
-    text-decoration: underline;
-}
-
-#backgroundImage {
+/*front page*/
+#frontPage {
     color: #3c4359;
-    background-image: url("pics/photo2.png");
+    background-image: url("pics/frontpage-background.jpg");
     width: 100vw;
     height: 100vh;
-    background-size: 100% 100%;
+    background-size: 98.9% 100%;
     background-repeat: no-repeat;
+}
+#introduction{
+    border-radius: 100px;
+    margin: auto;
+    background-color: rgba(242,242,242,0.5);
+    width: 70%;
+    font-size: 50px;
     text-align: center;
+    padding: 20px;
 }
-
-p{
-    font-family: "Comic Sans MS";
-    font-size: 100px;
-}
-
-#frontPageBut {
-    border-radius: 20%;
-    border: 5px double grey;
+#introduction a{
+    text-decoration: none;
     color: #3c4359;
-    background-color: beige;
-    width: 200px;
-    height: 120px;
-    font-size: 20px;
 }
-
+#introduction button{
+    border-color: transparent;
+    border-radius: 20px;
+    color: #3c4359;
+    background-color: goldenrod;
+    width: 60%;
+    height: fit-content;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+#introduction button:hover{
+    box-shadow: 0 0 20px gray;
+}
+/*search page*/
 legend{
      color: red;
     font-weight: bold;
 }
-
 #search-address{
     width: 300px
 }
-
+/*my account page*/
 .h1{
     background-color: #3c4359;
     color: #f2f2f2;
 }
-
 #pss #cpss #eoss{
     margin-left: 400px;
     background-color: #3c4359;
     color: #f2f2f2;
 }
+/*review page*/
+#review{
+    text-align: center;
+}
+/*contact us page*/
+#contactus{
+    text-align: center;
+    align-content: center;
+}
+#contactus fieldset{
+    background-color: #b3d4fc;
+    text-align: center;
+}
+#centerForContactUs {
+    font-size: 50px;
+    text-align: center;
+    color: #3c4359;
+}
+#smallWordsForContactUs {
+    text-align: center;
+    color: #3c4359;
+    font-size: 25px;
+}
+#contactus table{
+    margin: 0 auto;
+}
+.contactInfo {
+    border-color: #b3d4fc;
+    border-radius: 30px;
+    width: 200px;
+    height: 50px;
+}
+#contactus textarea {
+    font-size: 15px;
+    border-color: #b3d4fc;
+    border-radius: 10px;
+    width: 400px;
+    height: 250px;
+}
+#robotChecking {
+    border-color: #b3d4fc;
+    border-radius: 30px;
+}
+#contactus button {
+    font-size: 18px;
+    border-radius: 90px;
+    size: 50px;
+    background-color: lavender;
+}
 
-
+/*eric contact*/
 .content {
 	background-color: #3c4359;
     color: #f2f2f2;
@@ -153,3 +223,4 @@ legend{
 	
 
 }
+/*eric reviews*/
