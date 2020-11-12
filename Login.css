@@ -89,7 +89,7 @@ p{
     font-size: 100px;
 }
 
-button{
+#frontPageBut {
     border-radius: 20%;
     border: 5px double grey;
     color: #3c4359;
