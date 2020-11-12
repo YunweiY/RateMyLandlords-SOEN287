@@ -1,3 +1,9 @@
+body{
+    font-family: Merriweather;
+}
+button{
+    font-family: Merriweather;
+}
 /*navigation bar*/
 nav {
     left: 0;
@@ -39,7 +45,7 @@ nav button:hover{
     box-shadow: 0 0 5px #f2f2f2;
 }
 nav button a{
-    margin-top:-5px;
+    margin-top:-10px;
     font-size: 18px;
 }
 nav button a:hover{
@@ -94,9 +100,7 @@ footer a:hover{
     border-radius: 100px;
     margin: auto;
     background-color: rgba(242,242,242,0.5);
-    opacity: 100%;
     width: 70%;
-    font-family: Calibri;
     font-size: 50px;
     text-align: center;
     padding: 20px;
