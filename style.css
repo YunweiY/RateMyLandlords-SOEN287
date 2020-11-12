@@ -141,18 +141,26 @@ legend{
     text-align: center;
 }
 /*contact us page*/
+#contactus{
+    text-align: center;
+    align-content: center;
+}
+#contactus fieldset{
+    background-color: #b3d4fc;
+    text-align: center;
+}
 #centerForContactUs {
     font-size: 50px;
     text-align: center;
     color: #3c4359;
 }
-#fieldsetForContactUs {
-    background-color: #b3d4fc;
-}
 #smallWordsForContactUs {
     text-align: center;
     color: #3c4359;
     font-size: 25px;
+}
+#contactus table{
+    margin: 0 auto;
 }
 .contactInfo {
     border-color: #b3d4fc;
@@ -160,20 +168,20 @@ legend{
     width: 200px;
     height: 50px;
 }
-#userOpinion {
+#contactus textarea {
     font-size: 15px;
     border-color: #b3d4fc;
     border-radius: 10px;
     width: 400px;
     height: 250px;
 }
-#contactUsBut {
+#robotChecking {
+    border-color: #b3d4fc;
+    border-radius: 30px;
+}
+#contactus button {
     font-size: 18px;
     border-radius: 90px;
     size: 50px;
     background-color: lavender;
-}
-#robotChecking {
-    border-color: #b3d4fc;
-    border-radius: 30px;
 }

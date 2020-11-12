@@ -15,13 +15,13 @@
     <button><a href="Signup.html">Sign up</a></button>
     <button><a href="Login.html">Log in</a></button>
 </nav>
-<fieldset id="fieldsetForContactUs">
+<div id="contactus">
+    <fieldset>
     <p id="centerForContactUs">Get in touch with us now</p>
     <p id="smallWordsForContactUs">Please fill the form below</p>
-</fieldset>
-
-<br/>
-<table id="tableForContactUs" align="center">
+    </fieldset>
+    <br/>
+    <table>
     <tr>
         <td><label><input class="contactInfo" type="text" placeholder="Last name"></label></td>
         <td><label><input class="contactInfo" type="text" placeholder="First name"></label></td>
@@ -30,23 +30,12 @@
         <td><label><input class="contactInfo" type="text" placeholder="Email address"></label></td>
         <td><label><input class="contactInfo" type="text" placeholder="Phone number"></label></td>
     </tr>
-</table>
-
-<br/><br/>
-
-<center><label><textarea id="userOpinion" type="text"
-                         placeholder="Why are you trying to contact us?"></textarea></label></center>
-<br/><br/>
-
-<center>Are you a robot?</center>
-<center><label><input id="robotChecking" type="text" placeholder="Say 'No'"></label></center>
-<br/>
-<center>
-    <button id="contactUsBut">Send to us!</button>
-</center>
-
-<br/><br/>
-
+</table><br/><br/>
+    <label><textarea type="text" placeholder="Why are you trying to contact us?"></textarea></label><br/><br/>
+    <p>Are you a robot?</p>
+    <label><input id="robotChecking" type="text" placeholder="Say 'No'"></label><br/><br/>
+    <button>Send to us!</button><br/><br/>
+</div>
 <footer>
     <table>
         <tr>
@@ -57,7 +46,5 @@
         </tr>
     </table>
 </footer>
-
-
 </body>
 </html>
