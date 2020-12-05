@@ -8,13 +8,13 @@
 </head>
 <body>
 <nav>
-    <a href="FrontPage.html" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
-    <a href="FrontPage.html">Home</a>
-    <a href="Review.html" class="active">Review</a>
-    <a href="MyAccount.html">My account</a>
-    <a href="Search.html">Search</a>
-    <button><a href="Signup.html">Sign up</a></button>
-    <button><a href="Login.html">Log in</a></button>
+    <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
+    <a href="FrontPage.php">Home</a>
+    <a href="Review.php" class="active">Review</a>
+    <a href="MyAccount.php">My account</a>
+    <a href="Search.php">Search</a>
+    <button><a href="Signup.php">Sign up</a></button>
+    <button><a href="Login.php">Log in</a></button>
 </nav>
 <main id="review">
     <img src="pics/logo.png"><br/>
@@ -27,7 +27,7 @@
             <td>By Happy Web Programming team(No. 19)</td>
         </tr>
         <tr>
-            <td><a href="ContactUs.html">Contact us</a></td>
+            <td><a href="ContactUs.php">Contact us</a></td>
         </tr>
     </table>
 </footer>
