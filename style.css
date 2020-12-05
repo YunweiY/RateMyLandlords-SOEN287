@@ -189,38 +189,3 @@ legend{
     size: 50px;
     background-color: lavender;
 }
-
-/*eric contact*/
-.content {
-	background-color: #3c4359;
-    color: #f2f2f2;
-	text-align: center;
-}
-
-.content1 {
-	text-align: center;
-}
-.content2 {
-	margin-left: 45.5%;   
-}
-
-
-.column {
-  flex: 50%;
-}
-
-
-.row {
-  display: flex;
-}
-
-.links{
-	display: inline-box;
-	justify-content: center;
-    text-align: center;
-	line-height:40px;
-	margin-top:0px;
-	
-
-}
-/*eric reviews*/
