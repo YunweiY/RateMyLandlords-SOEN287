@@ -1,2 +1,1 @@
-$YY	qwer	Yunwei	Yang	yunweiy0211@gmail.com				anonymous	anonymous
-$alice	qwe	Yunwei	Yang	yunweiy0211@gmail.com				anonymous	anonymous
+Admin	Admin	Admin	Admin	yunweiy0211@gmail.com				anonymous	anonymous
