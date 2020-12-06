@@ -208,6 +208,7 @@ legend{
     background-color: lavender;
 }
 form input[type=submit]{
+    font-family: Merriweather;
     color:#3c4359;
     border-radius: 90px;
     size: 50px;
