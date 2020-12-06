@@ -48,6 +48,7 @@ session_start();
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30" alt=" loggo"></a>
     <a href="FrontPage.php">Home</a>
+    <a href="Review.php" class="active">Review</a>
     <a href="MyAccount.php">My account</a>
     <a href="Search.php">Search</a>
     <button><a href="Signup.php">Sign up</a></button>
@@ -56,6 +57,7 @@ session_start();
 <main id="write_review">
     <div class="stars">
         <form action="">
+            <label>How many starts are you rating for</label>
             <input class="star star-5" id="star-5" type="radio" name="star"/>
             <label class="star star-5" for="star-5"></label>
             <input class="star star-4" id="star-4" type="radio" name="star"/>
@@ -66,8 +68,6 @@ session_start();
             <label class="star star-2" for="star-2"></label>
             <input class="star star-1" id="star-1" type="radio" name="star"/>
             <label class="star star-1" for="star-1"></label>
-            <br/>
-            <label>How many starts are you rating for</label>
             <br/><br/>
             <label>What is your comment?</label>
             <input type = "text"/>
