@@ -11,10 +11,8 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- start的css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/><!--map-->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""><!--map-->
-
-        var mymap =null;
+    var mymap =null;
     </script>
-
     <style type="text/css">
         #map {
             height: 400px;
@@ -70,8 +68,6 @@ session_start();
     color: red;
     }
     </style>
-
-
 </head>
 <body>
 <nav>
@@ -91,9 +87,9 @@ session_start();
     ?>
 </nav>
 <main id="review">
-   <table border = "1" >
+   <table border = "0" >
        <tr>
-           <td><span class="heading">Landlord <?php echo $_SESSION["landlord_name"];?></span>
+           <td><span class="heading">Landlord <?php echo $_SESSION["landlord"];?></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -155,15 +151,12 @@ session_start();
                     <div class="bar-1"></div>
                     </div>
                 </div>
-                <div class="side right">
-                    <div><?php echo $_SESSION["star1"]; ?></div></div>
-
-
+                <div class="side right"><div><?php echo $_SESSION["star1"]; ?></div></div>
            </td>
        </tr>
        <tr>
            <td colspan="2" ><!--map-->
-               <div id="mapid" style="width: 1878px; height: 600px;"></div>
+               <div id="mapid" style="width: 100%; height: 600px;"></div>
                <script type="text/javascript">
 
                    //Initialize Map

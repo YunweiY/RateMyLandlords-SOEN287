@@ -10,10 +10,11 @@ session_start();
     <style>
 
         div.stars {
-            border:solid;
             width: 100%;
             display: inline-block;
             text-align: center;
+            margin-top: 25pt;
+            margin-bottom: 25pt;
         }
 
         .choice{
@@ -70,8 +71,8 @@ session_start();
     ?>
 </nav><main id="write_review">
     <div class="stars">
-        <form action="">
-            <label>How many starts are you rating for</label><br/>
+        <form action="post">
+            <label>How many starts are you rating for <?php if(isset($_SESSION["landlord"])) echo "value=\"{$_SESSION["first_name"]}\"";?></label><br/>
             <fieldset class="choice">
                 <input class="star star-5" id="star-5" type="radio" name="star"/>
                 <label class="star star-5" for="star-5"></label>
@@ -84,10 +85,10 @@ session_start();
                 <input class="star star-1" id="star-1" type="radio" name="star"/>
                 <label class="star star-1" for="star-1"></label>
             </fieldset><br/>
-            <label>What is your comment?</label>
-            <input type = "text"/>
+            <label>What is your comment?</label><br/>
+            <textarea name="request" cols="50" rows="8" placeholder="Your Comment"></textarea>
             <br/> <br/>
-            <label>Thanks for your appreciation!</label>
+            <label>Thanks for your comment!</label>
             <br/> <br/>
             <input type = "submit" value = "submit"/>
             <input type = "reset" value = "start over"/>
