@@ -1,5 +1,7 @@
 body{
     font-family: Merriweather;
+    margin:0;
+    padding:0;
 }
 button{
     font-family: Merriweather;
@@ -101,7 +103,7 @@ footer a:hover{
     background-image: url("pics/frontpage-background.jpg");
     width: 100vw;
     height: 100vh;
-    background-size: 98.9% 100%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 #introduction{
