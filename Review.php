@@ -93,7 +93,7 @@ session_start();
 <main id="review">
    <table border = "1" >
        <tr>
-           <td><span class="heading">Landlord <?php echo $_SESSION[landlord_name];?></span>
+           <td><span class="heading">Landlord <?php echo $_SESSION["landlord_name"];?></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -113,7 +113,7 @@ session_start();
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION[star5]; ?></div><!-- 5星人数 -->
+                    <div><?php echo $_SESSION["star5"]; ?></div><!-- 5星人数 -->
                 </div>
                 <div class="side">
                     <div>4 star</div>
@@ -124,7 +124,7 @@ session_start();
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION[star4]; ?></div></div>
+                    <div><?php echo $_SESSION["star4"]; ?></div></div>
                 </div>
                 <div class="side">
                     <div>3 star</div>
@@ -135,7 +135,7 @@ session_start();
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION[star3]; ?></div></div>
+                    <div><?php echo $_SESSION["star3"]; ?></div></div>
 
                 <div class="side">
                     <div>2 star</div>
@@ -146,7 +146,7 @@ session_start();
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION[star2]; ?></div></div>
+                    <div><?php echo $_SESSION["star2"]; ?></div></div>
                 <div class="side">
                     <div>1 star</div>
                 </div>
@@ -156,7 +156,7 @@ session_start();
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION[star1]; ?></div></div>
+                    <div><?php echo $_SESSION["star1"]; ?></div></div>
 
 
            </td>
@@ -190,7 +190,7 @@ session_start();
                    //There is also the reverse search from lat long to address
                    function addr_search()
                    {
-                       var addr =  $_SESSION[address] ;//address php
+                       var addr =  $_SESSION["address"] ;//address php
                        var xmlhttp = new XMLHttpRequest();
                        var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + addr;
                        xmlhttp.onreadystatechange = function()
