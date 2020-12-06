@@ -5,7 +5,16 @@ Session_start();
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>My Account</title>
+    <title>
+        <?php
+        if(isset($_SESSION["login"])&&$_SESSION["login"]){
+            echo "My Account";
+        }
+        else{
+            echo "You have not logged in";
+        }
+        ?>
+    </title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <style>

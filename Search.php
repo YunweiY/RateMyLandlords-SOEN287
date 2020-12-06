@@ -1,11 +1,24 @@
 <?php
 Session_start();
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $lines = fopen('landlords/landlords.txt','r');
+    while (!feof($lines)){
+        $line=fgets($lines);
+        if(strpos($line, "{$_POST["search"]}") !== false){
+            $_SESSION["search"]=$_POST["search"];
+            fclose($lines);
+            header("location: Review.php");
+        }
+    }
+    fclose($lines);
+    header("location: Review.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>search</title>
+    <title>Search</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <style>
@@ -51,11 +64,11 @@ Session_start();
     <br/>
     <br/>
     <div id="introduction" style="margin:0 auto;">
-        <form action = "" method = "post" >
+        <form method = "post" >
                 <label>Search what you want!</label><br/>
                 <table class = "serach-field" border = "0" >
                    <tr>
-                    <td><input type="text" size="50"/></td>
+                    <td><input type="text" name="search" size="50"/></td>
                     <td>
                         <input type="image" src="pics/search_icon.png" alt="Submit" width="25">
                     </td>

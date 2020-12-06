@@ -5,7 +5,16 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Write a Review</title>
+    <title>
+        <?php
+        if(isset($_SESSION["landlord_name"])){
+            echo $_SESSION["landlord_name"];
+        }
+        else{
+            echo "Landlord not found";
+        }
+        ?>
+    </title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- start的css -->
@@ -86,6 +95,7 @@ session_start();
     }
     ?>
 </nav>
+<?php if(isset($_SESSION["search"])){?>
 <main id="review">
    <table border = "0" >
        <tr>
@@ -236,12 +246,18 @@ session_start();
            </div>
            </td >
        </tr>
-
-
-
-
    </table>
 </main>
+<?php } else { ?>
+    <main id="frontPage">
+        <br/>
+        <br/>
+        <div id="introduction">
+            <p>Landlord not found!</p>
+            <button><a href="#">Create one <span>&#8594;</span></a></button><br/>
+        </div>
+    </main>
+<?php } ?>
 <footer>
     <table>
         <tr>

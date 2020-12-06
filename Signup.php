@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"&&isset($_POST['submit'])){
     }
     if($available&&$passwords){
         //store all information to /userdata/accounts.txt
-        $file=fopen('userdata/accounts.txt','a') or die("Unable to open file!");
+        $file=fopen('users/accounts.txt','a') or die("Unable to open file!");
         $info=$_SESSION["username"]."\t".$_SESSION["password"]."\t".$_SESSION["first_name"]."\t" .$_SESSION["last_name"].
             "\t".$_SESSION["email"]."\t".$_SESSION["phone"]."\t".$_SESSION["address"].
             "\t".$_SESSION["age"]."\t".$_SESSION["gender"]."\t".$_SESSION["identity"]."\n";
@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"&&isset($_POST['submit'])){
 }
 function id_availability()
 {
-    $lines = fopen('userdata/accounts.txt','r');
+    $lines = fopen('users/accounts.txt','r');
     while (!feof($lines)){
         $line=fgets($lines);
         if(strpos($line, "{$_POST["username"]}") !== false){

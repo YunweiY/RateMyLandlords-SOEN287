@@ -66,7 +66,7 @@ Session_destroy();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Password sent!</title>
+    <title>Password sent</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
 </head>
