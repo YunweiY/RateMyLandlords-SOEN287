@@ -26,7 +26,7 @@ Session_start();
     }
     ?>
 </nav>
-<div id="frontPage">
+<main id="frontPage">
     <br/>
     <br/>
     <div id="introduction">
@@ -34,7 +34,7 @@ Session_start();
         <p>You have joined Rate My Landlords!</p>
         <button><a href="Login.php">Log in using your new account <span>&#8594;</span></a></button><br/>
     </div>
-</div>
+</main>
 <footer>
     <table>
         <tr>

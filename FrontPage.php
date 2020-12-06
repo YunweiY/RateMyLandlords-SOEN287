@@ -26,14 +26,14 @@ Session_start();
     }
     ?>
 </nav>
-<div id="frontPage">
+<main id="frontPage">
     <br/>
     <br/>
     <div id="introduction">
         <p>Welcome to Rate My LandLords!</p>
         <button><a href="Search.php">Search a landlord <span>&#8594;</span></a></button><br/>
     </div>
-</div>
+</main>
 <footer>
     <table>
         <tr>

@@ -69,7 +69,8 @@ session_start();
         echo '<button><a href="Login.php">Log in</a></button>';
     }
     ?>
-</nav><main id="write_review">
+</nav>
+<main id="write_review">
     <div class="stars">
         <form action="post">
             <label>How many starts are you rating for <?php if(isset($_SESSION["landlord"])) echo "value=\"{$_SESSION["first_name"]}\"";?></label><br/>

@@ -26,7 +26,7 @@ Session_start();
     }
     ?>
 </nav>
-<div id="contactus">
+<main id="contactus">
     <fieldset>
     <p id="centerForContactUs">Get in touch with us now</p>
     <p id="smallWordsForContactUs">Please fill the form below</p>
@@ -46,7 +46,7 @@ Session_start();
     <p>Are you a robot?</p>
     <label><input id="robotChecking" type="text" placeholder="Say 'No'"></label><br/><br/>
     <button>Send to us!</button><br/><br/>
-</div>
+</main>
 <footer>
     <table>
         <tr>

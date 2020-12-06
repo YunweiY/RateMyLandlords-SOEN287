@@ -28,7 +28,7 @@ Session_destroy();
     }
     ?>
 </nav>
-<div id="frontPage">
+<main id="frontPage">
     <br/>
     <br/>
     <div id="introduction">
@@ -36,7 +36,7 @@ Session_destroy();
         <button><a href="FrontPage.php">Back to Homepage <span>&#8594;</span></a></button><br/>
         <button><a href="Login.php">Log in by another account <span>&#8594;</span></a></button><br/>
     </div>
-</div>
+</main>
 <footer>
     <table>
         <tr>

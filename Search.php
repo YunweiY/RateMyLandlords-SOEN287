@@ -26,21 +26,22 @@ Session_start();
     }
     ?>
 </nav>
+<main>
     <form action = "">
 
-	 <fieldset>
-		
-        <legend id = "QS" >Quick Search</legend>
-        
-        <input id = "search-address" value = "landlord"/>
-        
-        <button type="button" onclick=addr_search()> check </button>
-       
-       <br/>
-	
-    </fieldset>
+        <fieldset>
 
-</form>
+            <legend id = "QS" >Quick Search</legend>
+
+            <input id = "search-address" value = "landlord"/>
+
+            <button type="button" onclick=addr_search()> check </button>
+
+            <br/>
+
+        </fieldset>
+
+    </form>
     <fieldset>
 
         <legend>Advance Search</legend>
@@ -51,107 +52,108 @@ Session_start();
 
         <select name = "size">
 
-               <option value = "studio"> 1 1/2</option>
-			   <option value = "apartment"> 2 1/2</option>
-        	   <option value = "apartment"> 3 1/2</option>
-        	   <option value = "apartment"> 4 1/2</option>
-        	   <option value = "apartment"> 5 1/2</option>
-        	   <option value = "apartment"> 6 1/2</option>
+            <option value = "studio"> 1 1/2</option>
+            <option value = "apartment"> 2 1/2</option>
+            <option value = "apartment"> 3 1/2</option>
+            <option value = "apartment"> 4 1/2</option>
+            <option value = "apartment"> 5 1/2</option>
+            <option value = "apartment"> 6 1/2</option>
         </select>
 
-                <br/>
+        <br/>
 
         <br/>
 
         <label>Rental Term:
 
-        <br/>
+            <br/>
 
-        <input type = "radio" name = "term" value = "st" checked/>short term</label><br/>
+            <input type = "radio" name = "term" value = "st" checked/>short term</label><br/>
 
         <label><input type = "radio" name = "term" value = "lt">long term</label><br/>
         <label><input type = "radio" name = "term" value = "OT">other: </label><br/>
-       	<input type = "text" name = "term" placeholder = "3 months">
+        <input type = "text" name = "term" placeholder = "3 months">
         <br/>
         <br/>
 
         <label>Features:
 
-        <br/>
+            <br/>
 
-        <input type = "checkbox" name = "f" value = "bl" checked/>balcony</label>
+            <input type = "checkbox" name = "f" value = "bl" checked/>balcony</label>
 
         <label><input type = "checkbox" name = "f" value = "hf">high floor</label>
 
         <label><input type = "checkbox" name = "f" value = "PL">elevator</label>
-		
+
         <label><input type = "checkbox" name = "f" value = "SE">security</label>
-        
+
         <label><input type = "checkbox" name = "f" value = "PS">parking spot</label>
         <br/>
-		<br/>
-    	
-        <label>Inclued: </label>
-    	<br/>
-        <label><input type = "checkbox" name = "f" value = "EL">electronic</label>
-    	<label><input type = "checkbox" name = "f" value = "WA" checked/>water</label>	
-    	<br/><br/>
-    	
-        <label>Expected Rent: </label>
-    	<br/>
-        <input type = "text"  placeholder = "500$"></label>
-    	<br/><br/>
-    	
-        <label>Gender
-
         <br/>
 
-        <input type = "radio" name = "gender"checked/>male</label><br/>
+        <label>Inclued: </label>
+        <br/>
+        <label><input type = "checkbox" name = "f" value = "EL">electronic</label>
+        <label><input type = "checkbox" name = "f" value = "WA" checked/>water</label>
+        <br/><br/>
+
+        <label>Expected Rent: </label>
+        <br/>
+        <input type = "text"  placeholder = "500$"></label>
+        <br/><br/>
+
+        <label>Gender
+
+            <br/>
+
+            <input type = "radio" name = "gender"checked/>male</label><br/>
 
         <label><input type = "radio" name = "gender">female</label><br/>
         <br/>
-       
-       <label>Age:
 
-        <br/>
+        <label>Age:
 
-        <input type = "radio" name= "age" checked/>old</label><br/>
+            <br/>
+
+            <input type = "radio" name= "age" checked/>old</label><br/>
 
         <label><input type = "radio" name= "age" >young</label><br/>
         <label><input type = "radio" name= "age">other: </label><br/>
-       	<input type = "text" placeholder = "20">years old
+        <input type = "text" placeholder = "20">years old
         <br/>
         <br/>
-        
+
         <label>Personalities Of Landlord:
 
-        <br/>
+            <br/>
 
-        <input type = "checkbox"  checked/>kind</label>
+            <input type = "checkbox"  checked/>kind</label>
 
         <label><input type = "checkbox"  >strict</label>
 
         <label><input type = "checkbox" >easy-going</label>
-		
+
         <label><input type = "checkbox"  >straightforward</label>
-        
+
         <label><input type = "checkbox"  >gentle</label>
         <br/>
-		<br/>
-    
-    	<label>The Nationality Of Landlord: </label>
-    	<br/>
+        <br/>
+
+        <label>The Nationality Of Landlord: </label>
+        <br/>
         <input type = "text"  placeholder = "Canada"></label>
-    	<br/><br/>
-        
+        <br/><br/>
+
         <label>Apartment Address: </label>
-    	<br/>
+        <br/>
         <input type = "text"  placeholder = "2540 rue onratio, Montreal, QC" id = "address"></label>
-    	<br/><br/>
-    
-    	<input type="submit" value="Submit">
-		<input type="reset" value="Start Over">
+        <br/><br/>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Start Over">
     </fieldset>
+</main>
     <footer>
     <table>
         <tr>
