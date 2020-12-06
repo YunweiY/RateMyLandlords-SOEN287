@@ -48,7 +48,6 @@ session_start();
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30" alt=" loggo"></a>
     <a href="FrontPage.php">Home</a>
-    <a href="Review.php" class="active">Review</a>
     <a href="MyAccount.php">My account</a>
     <a href="Search.php">Search</a>
     <button><a href="Signup.php">Sign up</a></button>
