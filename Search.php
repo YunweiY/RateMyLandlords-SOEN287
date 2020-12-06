@@ -25,12 +25,6 @@ Session_start();
             color:#3c4359;
             background-color: transparent;
         }
-
-        input[type=submit] {
-            background: url(pics/search_icon.png);
-            border: 0;
-            display: block;
-        }
     </style>
 
 </head>
@@ -56,8 +50,7 @@ Session_start();
     <br/>
     <br/>
     <br/>
-
-    <div id="introduction" style="width:800px; margin:0 auto;">
+    <div id="introduction" style="margin:0 auto;">
         <form action = "" method = "post" >
                 <label>Search what you want!</label><br/>
                 <table class = "serach-field" border = "0" >
@@ -68,8 +61,6 @@ Session_start();
                     </td>
                    </tr>
                 </table>
-
-
         </form>
     </div>
 </main>

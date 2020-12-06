@@ -166,14 +166,14 @@ function id_availability()
                 <label>Confirm Password: <input type = "password" name="check_password" size="25"/></label><br/>
                 <?php
                     if(isset($password_message)){
-                        echo "<b>".$password_message."</b><br/>";
-                    }
-                    else{
-                        echo "<br/>";
+                        echo "<b>".$password_message."</b>";
                     }
                 ?>
-                <input type="submit" value="Submit" name="submit">
             </fieldset>
+            <fieldset style="border: transparent;text-align: right;">
+                <input type="submit" value="Submit" name="submit" style="font-size:15pt;">
+            </fieldset>
+
         </form>
     </main>
     <footer>

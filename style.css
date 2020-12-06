@@ -207,3 +207,9 @@ legend{
     size: 50px;
     background-color: lavender;
 }
+form input[type=submit]{
+    color:#3c4359;
+    border-radius: 90px;
+    size: 50px;
+    background-color: lavender;
+}
