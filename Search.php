@@ -15,16 +15,22 @@ Session_start();
             text-align: center;
         }
 
-
         table{
             margin:0 auto;
         }
 
-        .search_button{
-            border: none;
-            background: pics/magnify.png;
+        input{
+            font-size:25px;
+            border-color:#3c4359;
+            color:#3c4359;
+            background-color: transparent;
         }
 
+        input[type=submit] {
+            background: url(pics/search_icon.png);
+            border: 0;
+            display: block;
+        }
     </style>
 
 </head>
@@ -50,27 +56,15 @@ Session_start();
     <br/>
     <br/>
     <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
 
     <div id="introduction" style="width:800px; margin:0 auto;">
         <form action = "" method = "post" >
-
-
-
                 <label>Search what you want!</label><br/>
                 <table id = "serach-field" border = "0" >
                    <tr>
                     <td><input type="text" size="50"/></td>
                     <td>
-                        <input type = "submit" value = "search"  class="search_button">
+                        <input type="image" src="pics/search_icon.png" alt="Submit" width="25">
                     </td>
                    </tr>
                 </table>
