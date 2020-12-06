@@ -1,18 +1,21 @@
 <?php
 Session_start();
-$valid=true;
+$exist=true;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $lines = fopen('userdata/accounts.txt','r');
     while (!feof($lines)){
         $line=fgets($lines);
-        if(strpos($line, $_POST["username"]) !== false && strpos($line, $_POST["password"]) !== false){
-            $_SESSION["login"]=true;
-            $_SESSION["name"]=$_POST["username"];
+        if(strpos($line, $_POST["email"]) !== false){
+            $_SESSION["email"]=$_POST["email"];
+            $info=explode("\t",$line);
+            $_SESSION["password"]=$info[1];
+            $_SESSION["first_name"]=$info[2];
+            $_SESSION["last_name"]=$info[3];
             fclose($lines);
-            header("location: MyAccount.php");
+            header("location: PasswordSent.php");
         }
     }
-    $valid=false;
+    $exist=false;
     fclose($lines);
 }
 ?>
@@ -24,10 +27,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <style>
-        .middle {
-            margin-left: auto;
-            margin-right: auto;
-        }
         b{
             color:red;
             font-size:smaller;
@@ -53,31 +52,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </nav>
 <main>
     <form method="post" id="loginBox">
-        <table class="middle">
-            <tr>
-                <td><span>Username &nbsp</span></td>
-                <td><input type="text" name="username" placeholder="Enter Username" required></td>
-            </tr>
-            <tr>
-                <td><span>Password &nbsp</span></td>
-                <td><input type="password" name="password" placeholder="Enter Password" required></td>
-            </tr>
-        </table>
+        <label>Your email &nbsp<input type="text" name="email" placeholder="123@123.com" required></label><br/>
         <?php
-        if(!$valid){
-            echo "<b>Your username/password is incorrect.</b><br/><br/>";
+        if(!$exist){
+            echo "<b>We don't have an account with that email.</b><br/><br/>";
         }
         else{
             echo"<br/>";
         }
         ?>
-        <label><input type="checkbox" name="remember"> Remember me</label><br/><br/>
-        <input type="submit" name="login" value="Login"/>
-        <br/><br/>
-        <span id="password">
-            <a href="ForgetPassword.php">Forgot password?</a><br/><br/>
-            <a href="Signup.php">Don't have an account? Sign up now!</a>
-        </span>
+        <input type="submit" name="login" value="Submit"/>
     </form>
 </main>
 <footer>

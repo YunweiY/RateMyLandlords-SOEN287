@@ -96,9 +96,10 @@ function id_availability()
             color:red;
             text-decoration: none;
         }
+        form{
+            margin:25pt;
+        }
         fieldset{
-            margin-top:10pt;
-            margin-bottom: 10pt;
             padding: 10pt 25pt;
         }
         legend{
