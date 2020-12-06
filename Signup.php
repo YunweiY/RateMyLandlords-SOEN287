@@ -3,6 +3,7 @@ Session_start();
 $_SESSION["gender"]="anonymous";
 $_SESSION["identity"]="anonymous";
 $available=$passwords=true;
+$available_message="";
 if($_SERVER["REQUEST_METHOD"] == "POST"&&isset($_POST['check'])){
     $_SESSION["first_name"]=$_POST["first_name"];
     $_SESSION["last_name"]=$_POST["last_name"];
@@ -31,7 +32,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"&&isset($_POST['submit'])){
     $_SESSION["age"]=$_POST["age"];
     $_SESSION["gender"]=$_POST["gender"];
     $_SESSION["identity"]=$_POST["identity"];
-    $available=id_availability();
+    if(id_availability()){
+        $available=true;
+        $available_message = "This id is available!";
+    }
+    else{
+        $available=false;
+        $available_message = "This id already exists. Please choose another one.";
+        unset($_SESSION["username"]);
+    }
     if(empty($_POST["password"])){
         $passwords = false;
         $password_message = "Please enter a password";
@@ -128,12 +137,12 @@ function id_availability()
         <form method="post">
             <fieldset>
                 <legend>Step 1: Personal Information (Please complete all fields with "<b>*</b>")</legend>
-                <label>First Name: <input type = "text" name="first_name" placeholder="First Name" required <?php if(isset($_SESSION["first_name"])) echo "value=\"{$_SESSION["first_name"]}\"";?>/></label><b>*</b><br/>
-                <label>Last Name: <input type = "text" name="last_name" placeholder="Last Name" required <?php if(isset($_SESSION["last_name"])) echo "value=\"{$_SESSION["last_name"]}\"";?>/></label><b>*</b><br/><br/>
-                <label>Email: <input type = "email" name="email" placeholder="123@123.com" required <?php if(isset($_SESSION["email"])) echo "value=\"{$_SESSION["email"]}\"";?>/></label><b>*</b><br/><br/>
-                <label>Phone number: <input type = "text" name="phone" placeholder="123-456-7890" <?php if(isset($_SESSION["phone"])) echo "value=\"{$_SESSION["phone"]}\"";?>/></label><br/><br/>
-                <label>Address: <input type = "text" name="address" placeholder="Your Address" <?php if(isset($_SESSION["address"])) echo "value=\"{$_SESSION["address"]}\"";?>/></label><br/><br/>
-                <label>Age: <input type = "text" name="age" placeholder = "20" <?php if(isset($_SESSION["age"])) echo "value=\"{$_SESSION["age"]}\"";?>/> years old</label><br/><br/>
+                <label>First Name: <input type = "text" name="first_name" placeholder="First Name" size="25" required <?php if(isset($_SESSION["first_name"])) echo "value=\"{$_SESSION["first_name"]}\"";?>/></label><b>*</b><br/>
+                <label>Last Name: <input type = "text" name="last_name" placeholder="Last Name" size="25" required <?php if(isset($_SESSION["last_name"])) echo "value=\"{$_SESSION["last_name"]}\"";?>/></label><b>*</b><br/><br/>
+                <label>Email: <input type = "email" name="email" placeholder="123@123.com" size="25" required <?php if(isset($_SESSION["email"])) echo "value=\"{$_SESSION["email"]}\"";?>/></label><b>*</b><br/><br/>
+                <label>Phone number: <input type = "text" name="phone" placeholder="123-456-7890" size="25" <?php if(isset($_SESSION["phone"])) echo "value=\"{$_SESSION["phone"]}\"";?>/></label><br/><br/>
+                <label>Address: <input type = "text" name="address" placeholder="Your Address" size="25" <?php if(isset($_SESSION["address"])) echo "value=\"{$_SESSION["address"]}\"";?>/></label><br/><br/>
+                <label>Age: <input type = "text" name="age" placeholder = "20" size="25" <?php if(isset($_SESSION["age"])) echo "value=\"{$_SESSION["age"]}\"";?>/> years old</label><br/><br/>
                 <label>Gender: <b>*</b><br/>
                     <input type = "radio" name = "gender" value="male" <?php if($_SESSION["gender"]=="male") echo "checked";?>/>Male<br/>
                     <input type = "radio" name = "gender" value="female" <?php if($_SESSION["gender"]=="female") echo "checked";?>/>Female<br/>
@@ -146,18 +155,18 @@ function id_availability()
             </fieldset>
             <fieldset>
                 <legend>Step 2: Create an Account</legend>
-                <label>Username: <input type = "text" name="username" required <?php if(isset($_SESSION["username"])) echo "value=\"{$_SESSION["username"]}\"";?>/> </label>
+                <label>Username: <input type = "text" name="username" size="25" required <?php if(isset($_SESSION["username"])) echo "value=\"{$_SESSION["username"]}\"";?>/> </label>
                 <input type="submit" value="Check" name="check">
                 <?php
                     if(isset($available_message)){
                         echo "<b>".$available_message."</b>";
                     }
                 ?><br/><br/>
-                <label>Password: <input type = "password" name="password"/></label><br/>
-                <label>Confirm Password: <input type = "password" name="check_password"/></label><br/>
+                <label>Password: <input type = "password" name="password" size="25"/></label><br/>
+                <label>Confirm Password: <input type = "password" name="check_password" size="25"/></label><br/>
                 <?php
                     if(isset($password_message)){
-                        echo "<b>".$password_message."</b>";
+                        echo "<b>".$password_message."</b><br/>";
                     }
                     else{
                         echo "<br/>";

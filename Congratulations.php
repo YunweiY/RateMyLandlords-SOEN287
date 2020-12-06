@@ -1,5 +1,6 @@
 <?php
 Session_start();
+Session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">

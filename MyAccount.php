@@ -8,6 +8,16 @@ Session_start();
     <title>My Account</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
+    <style>
+        #introduction {
+            font-size: 20pt;
+        }
+        table.info{
+            margin-left:auto;
+            margin-right:auto;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <nav>
@@ -26,57 +36,59 @@ Session_start();
     }
     ?>
 </nav>
-<main>
-    <br/>
-    <div class = "h1">
-        Personal Profile
-    </div>
-    <br/>
-    <label>States: </label>
-    <select name = "states">
-        <option>Landlord</option>
-        <option>tenant</option>
-        <option>anonymous</option>
-    </select>
-    <br/>
-    <label>First Name:<input type = "text"/></label><br/>
-    <label>Last Name:<input type = "text"/></label><br/>
-    <label>email address:<input type = "text"/></label><br/>
-    <label>Gender: <br/>
-        <input type = "radio" name = "gender"checked/>male</label><br/>
-    <label><input type = "radio" name = "gender">female</label><br/>
-    <label><input type = "radio" name= "age">anonymous</label><br/>
-    <br/>
-    <label>Age:<br/><input type = "radio" name= "age" checked/>old</label><br/>
-    <label><input type = "radio" name= "age" >young</label><br/>
-    <label><input type = "radio" name= "age">anonymous</label><br/>
-    <label><input type = "radio" name= "age">other: </label><br/>
-    <input type = "text" placeholder = "20">years old
-    <br/>
-    <br/>
-    <button id = "pss">sumbit</button>
-    <br/>
-    <br/>
-    <div class = "h1">
-        Change Password
-    </div>
-    <br/>
-    <label>current password:<input type = "text"/></label><br/>
-    <label>new password:<input type = "text"/></label><br/>
-    <label>confirm password:<input type = "text"/></label><br/>
-    <button id = "cpss">sumbit</button>
-    <br/>
-    <br/>
-    <div class = "h1">
-        Email Options
-    </div>
-    <label>Always contact me <input type = "radio" name = "contact"></label><br/>
-    <label>do not contact me <input type = "radio" name = "contact"></label><br/>
-    <label>only send me the meesages<input type = "radio" name = "contact"></label><br/>
-    <button id = "eoss">sumbit</button>
-    <br/>
-    <br/>
-</main>
+<?php if(isset($_SESSION["login"])&&$_SESSION["login"]){?>
+    <main id="frontPage">
+        <br/>
+        <br/>
+        <div id="introduction">
+            <p>Personal Profile</p>
+            <table class="info">
+                <tr>
+                    <td>First Name &nbsp</td>
+                    <td><?php echo $_SESSION["first_name"];?></td>
+                </tr>
+                <tr>
+                    <td>Last Name &nbsp</td>
+                    <td><?php echo $_SESSION["last_name"];?></td>
+                </tr>
+                <tr>
+                    <td>Email address &nbsp</td>
+                    <td><?php echo $_SESSION["email"];?></td>
+                </tr>
+                <tr>
+                    <td>Phone number &nbsp</td>
+                    <td><?php echo $_SESSION["phone"];?></td>
+                </tr>
+                <tr>
+                    <td>Address &nbsp</td>
+                    <td><?php echo $_SESSION["address"];?></td>
+                </tr>
+                <tr>
+                    <td>Age &nbsp</td>
+                    <td><?php echo $_SESSION["age"];?></td>
+                </tr>
+                <tr>
+                    <td>Gender &nbsp</td>
+                    <td><?php echo $_SESSION["gender"];?></td>
+                </tr>
+                <tr>
+                    <td>Identity &nbsp</td>
+                    <td><?php echo $_SESSION["identity"];?></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+<?php } else{ ?>
+    <main id="frontPage">
+        <br/>
+        <br/>
+        <div id="introduction">
+            <p>You have not logged in!</p>
+            <button><a href="Login.php">Log in <span>&#8594;</span></a></button><br/>
+            <button><a href="FrontPage.php">Back to Homepage <span>&#8594;</span></a></button><br/>
+        </div>
+    </main>
+<?php } ?>
 	<footer>
 		<table>
 			<tr>

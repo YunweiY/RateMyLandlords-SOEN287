@@ -8,6 +8,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(strpos($line, $_POST["username"]) !== false && strpos($line, $_POST["password"]) !== false){
             $_SESSION["login"]=true;
             $_SESSION["name"]=$_POST["username"];
+            $info=explode("\t",$line);
+            $_SESSION["password"]=$info[1];
+            $_SESSION["first_name"]=$info[2];
+            $_SESSION["last_name"]=$info[3];
+            $_SESSION["email"]=$info[4];
+            $_SESSION["phone"]=$info[5];
+            $_SESSION["address"]=$info[6];
+            $_SESSION["age"]=$info[7];
+            $_SESSION["gender"]=$info[8];
+            $_SESSION["identity"]=$info[9];
             fclose($lines);
             header("location: MyAccount.php");
         }
