@@ -15,7 +15,7 @@ Session_start();
             text-align: center;
         }
 
-        table{
+        table.serach-field{
             margin:0 auto;
         }
 
@@ -60,7 +60,7 @@ Session_start();
     <div id="introduction" style="width:800px; margin:0 auto;">
         <form action = "" method = "post" >
                 <label>Search what you want!</label><br/>
-                <table id = "serach-field" border = "0" >
+                <table class = "serach-field" border = "0" >
                    <tr>
                     <td><input type="text" size="50"/></td>
                     <td>
