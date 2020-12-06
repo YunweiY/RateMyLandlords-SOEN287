@@ -71,6 +71,7 @@ footer {
     padding: 3px;
     background-color: #3c4359;
     color: #f2f2f2;
+    position:fixed;
 }
 footer a{
     color: #f2f2f2;
