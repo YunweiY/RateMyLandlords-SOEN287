@@ -10,9 +10,17 @@ session_start();
     <style>
 
         div.stars {
-            width: 270px;
+            border:solid;
+            width: 100%;
             display: inline-block;
             text-align: center;
+        }
+
+        .choice{
+            border:transparent;
+            width:fit-content;
+            margin-left:auto;
+            margin-right: auto;
         }
 
         input.star { display: none; }
@@ -46,29 +54,36 @@ session_start();
 </head>
 <body>
 <nav>
-    <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30" alt=" loggo"></a>
+    <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
-    <a href="Review.php" class="active">Review</a>
-    <a href="MyAccount.php">My account</a>
     <a href="Search.php">Search</a>
-    <button><a href="Signup.php">Sign up</a></button>
-    <button><a href="Login.php">Log in</a></button>
-</nav>
-<main id="write_review">
+    <a href="MyAccount.php">My account</a>
+    <?php
+    if(isset($_SESSION["login"])&&$_SESSION["login"]){
+        echo '<button><a href="SignOut.php">Sign out</a></button>';
+        echo "<a href=\"MyAccount.php\" class='user'>{$_SESSION["name"]}, welcome!</a>";
+    }
+    else{
+        echo '<button><a href="Signup.php">Sign up</a></button>';
+        echo '<button><a href="Login.php">Log in</a></button>';
+    }
+    ?>
+</nav><main id="write_review">
     <div class="stars">
         <form action="">
-            <label>How many starts are you rating for</label>
-            <input class="star star-5" id="star-5" type="radio" name="star"/>
-            <label class="star star-5" for="star-5"></label>
-            <input class="star star-4" id="star-4" type="radio" name="star"/>
-            <label class="star star-4" for="star-4"></label>
-            <input class="star star-3" id="star-3" type="radio" name="star"/>
-            <label class="star star-3" for="star-3"></label>
-            <input class="star star-2" id="star-2" type="radio" name="star"/>
-            <label class="star star-2" for="star-2"></label>
-            <input class="star star-1" id="star-1" type="radio" name="star"/>
-            <label class="star star-1" for="star-1"></label>
-            <br/><br/>
+            <label>How many starts are you rating for</label><br/>
+            <fieldset class="choice">
+                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                <label class="star star-1" for="star-1"></label>
+            </fieldset><br/>
             <label>What is your comment?</label>
             <input type = "text"/>
             <br/> <br/>
