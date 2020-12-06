@@ -1,3 +1,6 @@
+<?php
+Session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +13,18 @@
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
-    <a href="Review.php">Review</a>
-    <a href="MyAccount.php">My account</a>
     <a href="Search.php">Search</a>
-    <button><a href="Signup.php">Sign up</a></button>
-    <button><a href="Login.php">Log in</a></button>
+    <a href="MyAccount.php">My account</a>
+    <?php
+    if(isset($_SESSION["login"])&&$_SESSION["login"]){
+        echo '<button><a href="SignOut.php">Sign out</a></button>';
+        echo "<a href=\"MyAccount.php\" class='user'>{$_SESSION["name"]}, welcome!</a>";
+    }
+    else{
+        echo '<button><a href="Signup.php">Sign up</a></button>';
+        echo '<button><a href="Login.php">Log in</a></button>';
+    }
+    ?>
 </nav>
 <div id="contactus">
     <fieldset>

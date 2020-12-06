@@ -1,3 +1,21 @@
+<?php
+Session_start();
+$valid=true;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $lines = fopen('userdata/accounts.txt','r');
+    while (!feof($lines)){
+        $line=fgets($lines);
+        if(strpos($line, $_POST["username"]) !== false && strpos($line, $_POST["password"]) !== false){
+            $_SESSION["login"]=true;
+            $_SESSION["name"]=$_POST["username"];
+            fclose($lines);
+            header("location: MyAccount.php");
+        }
+    }
+    $valid=false;
+    fclose($lines);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +23,62 @@
     <title>Log in</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
+    <style>
+        .middle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        b{
+            color:red;
+            font-size:smaller;
+        }
+    </style>
 </head>
 <body>
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
-    <a href="Review.php">Review</a>
-    <a href="MyAccount.php">My account</a>
     <a href="Search.php">Search</a>
-    <button><a href="Signup.php">Sign up</a></button>
-    <button><a href="Login.php">Log in</a></button>
+    <a href="MyAccount.php">My account</a>
+    <?php
+    if(isset($_SESSION["login"])&&$_SESSION["login"]){
+        echo '<button><a href="SignOut.php">Sign out</a></button>';
+        echo "<a href=\"MyAccount.php\" class='user'>{$_SESSION["name"]}, welcome!</a>";
+    }
+    else{
+        echo '<button><a href="Signup.php">Sign up</a></button>';
+        echo '<button><a href="Login.php">Log in</a></button>';
+    }
+    ?>
 </nav>
 <main>
-    <div id="loginBox">
-    <label><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username"><br/>
-    <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password"><br/>
-    <label>
-        <input type="checkbox" name="remember"> Remember me
-    </label></br>
-    <button type="submit">Login</button>
-    <button type="button">Cancel</button><br/>
-        <br/>
+    <form method="post" id="loginBox">
+        <table class="middle">
+            <tr>
+                <td><span>Username &nbsp</span></td>
+                <td><input type="text" name="username" placeholder="Enter Username" required></td>
+            </tr>
+            <tr>
+                <td><span>Password &nbsp</span></td>
+                <td><input type="password" name="password" placeholder="Enter Password" required></td>
+            </tr>
+        </table>
+        <?php
+        if(!$valid){
+            echo "<b>Your username/password is incorrect.</b><br/><br/>";
+        }
+        else{
+            echo"<br/>";
+        }
+        ?>
+        <label><input type="checkbox" name="remember"> Remember me</label><br/><br/>
+        <input type="submit" name="login" value="Login"/>
+        <br/><br/>
         <span id="password">
-            <a href="#">Forgot password?</a><br/>
+            <a href="#">Forgot password?</a><br/><br/>
             <a href="Signup.php">Don't have an account? Sign up now!</a>
         </span>
-    </div>
+    </form>
 </main>
 <footer>
     <table>

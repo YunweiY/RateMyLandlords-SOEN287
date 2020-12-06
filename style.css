@@ -11,7 +11,6 @@ nav {
     width: 100%;
     background-color: #3c4359;
     overflow: hidden;
-    position: fixed;
 }
 nav a {
     float: left;
@@ -28,6 +27,14 @@ nav a:hover {
 nav a.active {
     background-color: Goldenrod;
     color: #f2f2f2;
+}
+nav a.user{
+    float: right;
+}
+nav a.user:hover{
+    background-color: #3c4359;
+    color: #ddd;
+    text-decoration: underline;
 }
 #logo {
     background-color: transparent;
@@ -62,7 +69,6 @@ footer {
     padding: 3px;
     background-color: #3c4359;
     color: #f2f2f2;
-    position: fixed;
 }
 footer a{
     color: #f2f2f2;
@@ -126,7 +132,7 @@ footer a:hover{
 }
 /*search page*/
 legend{
-     color: red;
+    color: #3c4359;
     font-weight: bold;
 }
 #search-address{
