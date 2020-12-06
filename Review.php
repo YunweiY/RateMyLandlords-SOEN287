@@ -19,7 +19,12 @@ session_start();
         #map {
             height: 400px;
         }
-
+        
+    table{
+        width:100%;
+        table-layout: fixed;
+    }
+        
     .fa {
     font-size: 25px;
     }
@@ -86,7 +91,7 @@ session_start();
     ?>
 </nav>
 <main id="review">
-   <table border = "0" >
+   <table border = "1" >
        <tr>
            <td><span class="heading">Landlord <?php echo $_SESSION[landlord_name];?></span>
                 <span class="fa fa-star checked"></span>
@@ -158,7 +163,7 @@ session_start();
        </tr>
        <tr>
            <td colspan="2" ><!--map-->
-               <div id="mapid" style="width: 2000px; height: 600px;"></div>
+               <div id="mapid" style="width: 1878px; height: 600px;"></div>
                <script type="text/javascript">
 
                    //Initialize Map
