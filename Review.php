@@ -1,6 +1,7 @@
 <?php
-
 session_start();
+//read landlord_name.txt
+//count the ratings
 $counter_star5 =0;
 $counter_line5 =0;
 $counter_star4 =0;
@@ -12,57 +13,59 @@ $counter_line2 =0;
 $counter_star1 =0;
 $counter_line1 =0;
 $allline=0;
-//read landlord_name.txt and count the rating
-?>
-<?php
-
-    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-    while (!feof($lines)) {
-        $line = fgets($lines);
-        if (strpos($line, "5stars") !== false) {
-            $counter_star5++;
-        }
-        $counter_line5++;
+$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+while (!feof($lines)) {
+    $line = fgets($lines);
+    if (strpos($line, "5stars") !== false) {
+        $counter_star5++;
     }
-
-
-    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-    while (!feof($lines)) {
-        $line = fgets($lines);
-        if (strpos($line, "4stars") !== false) {
-            $counter_star4++;
-        }
-        $counter_line4++;
+    $counter_line5++;
+}
+$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+while (!feof($lines)) {
+    $line = fgets($lines);
+    if (strpos($line, "4stars") !== false) {
+        $counter_star4++;
     }
-
-    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-    while (!feof($lines)) {
-        $line = fgets($lines);
-        if (strpos($line, "3stars") !== false) {
-            $counter_star3++;
-        }
-        $counter_line3++;
+    $counter_line4++;
+}
+$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+while (!feof($lines)) {
+    $line = fgets($lines);
+    if (strpos($line, "3stars") !== false) {
+        $counter_star3++;
     }
-
-    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-    while (!feof($lines)) {
-        $line = fgets($lines);
-        if (strpos($line, "2stars") !== false) {
-            $counter_star2++;
+    $counter_line3++;
+}
+$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+while (!feof($lines)) {
+    $line = fgets($lines);
+    if (strpos($line, "2stars") !== false) {
+        $counter_star2++;
     }
-        $counter_line2++;
+    $counter_line2++;
+}
+$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+while (!feof($lines)) {
+    $line = fgets($lines);
+    if (strpos($line, "1stars") !== false) {
+        $counter_star1++;
     }
-
-    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-    while (!feof($lines)) {
-        $line = fgets($lines);
-        if (strpos($line, "1stars") !== false) {
-            $counter_star1++;
-        }
-        $counter_line1++;
-    }
-    $allline = $counter_line1-1;
-    $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
+    $counter_line1++;
+}
+$allline = $counter_line1-1;
+$average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
+fclose($lines);
+//read all comments of the landlord in to a dynamic array and display later on the page
+$comments=array();
+$lines=fopen("landlords/{$_SESSION['landlord_name']}.txt",'r') or die("Unable to open file!");
+while (!feof($lines)){
+    $line=fgets($lines);
+    $info=explode("\t",$line);
+    array_push($comments, $info);
+}
+array_pop($comments);
+fclose($lines);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,63 +88,80 @@ $allline=0;
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""><!--map-->
     var mymap =null;
     </script>
-    <style type="text/css">
-        #map {
+    <style>
+        #mapid {
             height: 400px;
         }
-        
-    table{
-        width:100%;
-        table-layout: fixed;
-    }
-        
-    .fa {
-    font-size: 25px;
-    }
-    .bar-container {
-        width: 100%;
-        background-color: #f1f1f1;
-        text-align: center;
-        color: white;
-    }
-    .bar-5{
-        background-color: gold;
-        width:<?php echo (($counter_star5/$counter_line5)*100)."%";?>;
-        height: 13px;
+        table.container{
+            width:100%;
+            table-layout: fixed;
+            color: #3c4359;
+        }
+        .fa {
+            font-size: 25px;
+        }
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+        .bar-5{
+            background-color: gold;
+            width:<?php echo (($counter_star5/$counter_line5)*100)."%";?>;
+            height: 13px;
 
-    }
-    .bar-4{
-        background-color: gold;
-        width: <?php echo (($counter_star4/$counter_line4)*100)."%";?>;
-        height: 13px;
+        }
+        .bar-4{
+            background-color: gold;
+            width: <?php echo (($counter_star4/$counter_line4)*100)."%";?>;
+            height: 13px;
 
-    }
-    .bar-3{
-        background-color: gold;
-        width: <?php echo (($counter_star3/$counter_line3)*100)."%";?>;
-        height: 13px;
+        }
+        .bar-3{
+            background-color: gold;
+            width: <?php echo (($counter_star3/$counter_line3)*100)."%";?>;
+            height: 13px;
 
-    }
-    .bar-2{
-        background-color: gold;
-        width: <?php echo (($counter_star2/$counter_line2)*100)."%";?>;
-        height: 13px;
+        }
+        .bar-2{
+            background-color: gold;
+            width: <?php echo (($counter_star2/$counter_line2)*100)."%";?>;
+            height: 13px;
 
-    }
-    .bar-1{
-        background-color: gold;
-        width: <?php echo (($counter_star1/$counter_line1)*100)."%";?>;
-        height: 13px;
+        }
+        .bar-1{
+            background-color: gold;
+            width: <?php echo (($counter_star1/$counter_line1)*100)."%";?>;
+            height: 13px;
 
-    }
-
-
-    .checked {
-    color: red;
-    }
+        }
+        .checked {
+            color: red;
+        }
+        button{
+            border-radius: 90px;
+            size: 50px;
+            background-color: lavender;
+        }
+        button a{
+            color:#3c4359;
+            text-decoration:none;
+        }
+        .info{
+            font-size: 30pt;
+        }
+        div.comment{
+            color:#3c4359;
+            padding:25pt;
+            margin: 10pt;
+            text-align: left;
+            border-radius: 25px;
+            background-color: lavender;
+        }
     </style>
 </head>
-<body>
+<body onload="addr_search()">
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
@@ -160,7 +180,7 @@ $allline=0;
 </nav>
 <?php if(isset($_SESSION["landlord_name"])){?>
 <main id="review">
-   <table border = "0" >
+   <table border = "0" class="container" >
        <tr>
            <td>
                <span>Name: <?php echo $_SESSION["landlord_name"];?></span><br/>
@@ -172,76 +192,74 @@ $allline=0;
                <span class="fa fa-star checked <?php if($average>4||$average==4) echo "checked"; ?>"></span >
                <span class="fa fa-star checked <?php if($average==5) echo "checked"; ?>" ></span ><br/>
 
-                <?php echo "<span> $average based on $allline reviews. </span>"?>
-            </td>
+               <?php echo "<span> $average based on $allline reviews. </span>"?>
+           </td>
            <td>
                <div class="row">
-                    <div class="side">
-                        <div>5 star</div>
-                    </div>
-                <div class="middle">
-                    <div class="bar-container">
-                        <div class="bar-5"></div><!-- 第五个bar -->
-                    </div>
-                </div>
-                <div class="side right">
-                    <div>
-                        <?php echo $counter_star5; ?>
-                    </div>
-                <div class="side">
-                    <div>4 star</div>
-                </div>
-                <div class="middle">
-                    <div class="bar-container">
-                        <div class="bar-4"></div>
-                    </div>
-                </div>
-                <div class="side right">
-                    <div>
-                        <?php echo $counter_star4; ?>
-                    </div>
-                </div>
-                <div class="side">
-                    <div>3 star</div>
-                </div>
-                <div class="middle">
-                    <div class="bar-container">
-                        <div class="bar-3"></div>
-                    </div>
-                </div>
-                <div class="side right">
-                    <div><?php echo $counter_star3; ?></div></div>
+                   <div class="side">
+                       <div>5 star</div>
+                   </div>
+                   <div class="middle">
+                       <div class="bar-container">
+                           <div class="bar-5"></div><!-- 第五个bar -->
+                       </div>
+                   </div>
+                   <div class="side right">
+                       <div>
+                           <?php echo $counter_star5; ?>
+                       </div>
+                       <div class="side">
+                           <div>4 star</div>
+                       </div>
+                       <div class="middle">
+                           <div class="bar-container">
+                               <div class="bar-4"></div>
+                           </div>
+                       </div>
+                       <div class="side right">
+                           <div>
+                               <?php echo $counter_star4; ?>
+                           </div>
+                       </div>
+                       <div class="side">
+                           <div>3 star</div>
+                       </div>
+                       <div class="middle">
+                           <div class="bar-container">
+                               <div class="bar-3"></div>
+                           </div>
+                       </div>
+                       <div class="side right">
+                           <div><?php echo $counter_star3; ?></div></div>
 
-                <div class="side">
-                    <div>2 star</div>
-                </div>
-                <div class="middle">
-                    <div class="bar-container">
-                        <div class="bar-2"></div>
-                    </div>
-                </div>
-                <div class="side right">
-                    <div><?php echo $counter_star2; ?></div></div>
-                <div class="side">
-                    <div>1 star</div>
-                </div>
-                <div class="middle">
-                    <div class="bar-container">
-                    <div class="bar-1"></div>
-                    </div>
-                </div>
-                <div class="side right"><div><?php echo $counter_star1; ?></div></div>
+                       <div class="side">
+                           <div>2 star</div>
+                       </div>
+                       <div class="middle">
+                           <div class="bar-container">
+                               <div class="bar-2"></div>
+                           </div>
+                       </div>
+                       <div class="side right">
+                           <div><?php echo $counter_star2; ?></div></div>
+                       <div class="side">
+                           <div>1 star</div>
+                       </div>
+                       <div class="middle">
+                           <div class="bar-container">
+                               <div class="bar-1"></div>
+                           </div>
+                       </div>
+                       <div class="side right"><div><?php echo $counter_star1; ?></div></div>
            </td>
        </tr>
        <tr>
            <td colspan="2" ><!--map-->
                <div id="mapid" style="width: 100%; height: 600px;"></div>
                <script type="text/javascript">
-
                    //Initialize Map
                    var ConcordiaLat = 45.495675;
                    var ConcordiaLong = -73.578667;
-
                    //mapid is the id for your div element
                    //You can leave the rest as it is
                    mymap = L.map('mapid').setView([ConcordiaLat, ConcordiaLong], 14.5);
@@ -255,16 +273,17 @@ $allline=0;
                        zoomOffset: -1
                    }).addTo(mymap);
 
-
                    //CODE TO CHANGE ADDRESS TO LATLONG
                    //https://www.w3schools.com/js/js_ajax_http_response.asp
                    //https://wiki.openstreetmap.org/wiki/FR:Nominatim
                    //There is also the reverse search from lat long to address
                    function addr_search()
                    {
-                       var addr =  $_SESSION["address"] ;//address php
+                       var address =<?php echo json_encode($_SESSION['landlord_address']); ?>;//address php
+                       address=address.slice(0, -1);
+                       var name =<?php echo json_encode($_SESSION['landlord_name']); ?>;//address php
                        var xmlhttp = new XMLHttpRequest();
-                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + addr;
+                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address;
                        xmlhttp.onreadystatechange = function()
                        {
                            if (this.readyState == 4 && this.status == 200)
@@ -272,54 +291,31 @@ $allline=0;
                                var myArr = JSON.parse(this.responseText);
                                //myArr is an array of the matching addresses
                                //You can extract the lat long attributes
-
-
                                //Create markers from the info
-
                                var newlatlng = L.latLng(myArr[0].lat, myArr[0].lon);
-
-                               L.circleMarker(newlatlng, { color: "green", radius: 10}).addTo(mymap);
-
-
+                               L.marker(newlatlng, { color: "green", radius: 10}).addTo(mymap).bindPopup(name).openPopup();
                            }
                        };
                        xmlhttp.open("GET", url, true);
                        xmlhttp.send();
                    }
-
-
-
                </script>
-
-
            </td>
        </tr>
-
        <tr>
            <td colspan="2" >
-           <div>
-           <label>User name: <?php echo $_SESSION["username"]?></label>
-           <label>Start </label>
-           <span class="fa fa-star checked"></span>
-           <span class="fa fa-star checked"></span>
-           <span class="fa fa-star checked"></span>
-           <span class="fa fa-star checked"></span><!--要增加星数就check-->
-           <span class="fa fa-star"></span>
-           <br/>
-           <label>Score: </label>
-           <?php echo $_SESSION["commment"]?>
-           <br/>
-           <label>comments: </label>
-           <?php echo $_SESSION["commment"]?>
-           <br/>
-           </div>
+               <?php foreach($comments as $info){ ?>
+                   <div class="comment">
+                       <span><?php echo $info[2]?> &nbsp</span>
+                       <span class="fa fa-star checked"></span>
+                       <span class="fa fa-star <?php if ($info[0]!=="1star") echo 'checked';?>"></span>
+                       <span class="fa fa-star <?php if ($info[0]!=="1star"&&$info[0]!=="2stars") echo 'checked';?>"></span>
+                       <span class="fa fa-star <?php if ($info[0]!=="1star"&&$info[0]!=="2stars"&&$info[0]!=="3stars") echo 'checked';?>"></span><!--要增加星数就check-->
+                       <span class="fa fa-star <?php if ($info[0]==="5stars") echo 'checked';?>"></span>
+                       <p><?php echo $info[1]?></p>
+                   </div>
+               <?php } ?>
            </td >
-       </tr>
-       <tr>
-           <td><label>Do you wants to write a review?</label></td>
-       </tr>
-       <tr>
-           <td><button><a href="write review.php">Create one <span>&#8594;</span></a></button></td>
        </tr>
     </table>
 </main>
@@ -334,8 +330,6 @@ $allline=0;
         </div>
     </main>
 <?php } ?>
-
-
 <footer>
     <table>
         <tr>

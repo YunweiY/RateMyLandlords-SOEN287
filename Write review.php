@@ -8,11 +8,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         fwrite($file, $info);
         if(isset($_POST["comment"])) {
             $_SESSION["comment"]=$_POST["comment"];
-            $info = "\t" . $_SESSION["comment"]."\n";
+            $info = "\t" .$_SESSION["comment"]."\t".$_SESSION["name"]."\n";
             fwrite($file, $info);
         }
         else{
-            $info ="\n";
+            $info =$_SESSION["name"]."\n";
             fwrite($file, $info);
         }
         fclose($file);
@@ -98,6 +98,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     ?>
 </nav>
+<?php if(isset($_SESSION["login"])&&$_SESSION["login"]){?>
 <main id="write_review">
     <div class="stars">
         <form method="post">
@@ -124,6 +125,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
 </main>
+<?php } else { ?>
+    <main id="frontPage">
+        <br/>
+        <br/>
+        <div id="introduction">
+            <p>You have not logged in!</p>
+            <button><a href="Login.php">Log in <span>&#8594;</span></a></button><br/>
+            <button><a href="FrontPage.php">Back to Homepage <span>&#8594;</span></a></button><br/>
+        </div>
+    </main>
+<?php } ?>
 <footer>
     <table>
         <tr>
