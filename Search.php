@@ -5,7 +5,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     while (!feof($lines)){
         $line=fgets($lines);
         if(strpos($line, "{$_POST["search"]}") !== false){
-            $_SESSION["search"]=$_POST["search"];
+            $info=explode("\t",$line);
+            $_SESSION["landlord_name"]=$info[0];
+            $_SESSION["landlord_address"]=$info[1];
             fclose($lines);
             header("location: Review.php");
         }

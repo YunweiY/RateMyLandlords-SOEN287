@@ -95,7 +95,7 @@ session_start();
     }
     ?>
 </nav>
-<?php if(isset($_SESSION["search"])){?>
+<?php if(isset($_SESSION["landlord_name"])){?>
 <main id="review">
    <table border = "0" >
        <tr>
