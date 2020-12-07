@@ -1,17 +1,15 @@
 <?php
 session_start();
-if(iseet($_POST["submit"])){
-    if(iseet($_SESSION["star"])) {
+if(isset($_POST["submit"])){
+    if(isset($_SESSION["star"])) {
         $_SESSION["star"]=$_POST["star"];
         $file = fopen("landlords/{$_SESSION['landlord_name']}.txt", 'a') or die("Unable to open file!");
         $info = $_SESSION["star"];
         fwrite($file, $info);
-
-        if(iseet($_SESSION["comment"])) {
+        if(isset($_SESSION["comment"])) {
             $_SESSION["comment"]=$_POST["comment"];
             $info = "\t" . $_SESSION["comment"]."\n";
             fwrite($file, $info);
-
         }
         else{
             $info ="\n";
@@ -72,6 +70,15 @@ if(iseet($_POST["submit"])){
 
         label.star:before {
             content: '\2605';
+        }
+
+        form input[type=reset]{
+            font-family: Merriweather;
+            color:#3c4359;
+            border-radius: 90px;
+            size: 50px;
+            background-color: lavender;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +101,7 @@ if(iseet($_POST["submit"])){
 <main id="write_review">
     <div class="stars">
         <form action="post">
-            <label>How many starts are you rating for <?php if(isset($_SESSION["landlord_name"])) echo "value=\"{$_SESSION["landlord_name"]}\"";?></label><br/>
+            <label>How many stars are you rating for <?php if(isset($_SESSION["landlord_name"])) echo $_SESSION["landlord_name"];?></label><br/>
             <fieldset class="choice">
                 <input class="star star-5" id="star-5" type="radio" name="star" value = "5stars"/>
                 <label class="star star-5" for="star-5"></label>
@@ -104,7 +111,7 @@ if(iseet($_POST["submit"])){
                 <label class="star star-3" for="star-3"></label>
                 <input class="star star-2" id="star-2" type="radio" name="star" value = "2stars"/>
                 <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star" value = "1star"/>
+                <input class="star star-1" id="star-1" type="radio" name="star" value = "1star" checked/>
                 <label class="star star-1" for="star-1"></label>
             </fieldset><br/>
             <label>What is your comment?</label><br/>
