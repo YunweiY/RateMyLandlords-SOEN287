@@ -55,7 +55,11 @@ if(isset($_SESSION["landlord_name"])){
         $counter_line1++;
     }
     $allline = $counter_line1-1;
-    $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
+    $all_count=$counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1;
+    $average=1;
+    if($all_count!=0){
+        $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($all_count);
+    }
     fclose($lines);
 //read all comments of the landlord in to a dynamic array and display later on the page
     $comments=array();
@@ -165,6 +169,9 @@ if(isset($_SESSION["landlord_name"])){
             border-radius: 25px;
             background-color: lavender;
         }
+        footer td{
+            color: #f2f2f2;
+        }
     </style>
 </head>
 <body onload="addr_search()">
@@ -185,7 +192,7 @@ if(isset($_SESSION["landlord_name"])){
     ?>
 </nav>
 <?php if(isset($_SESSION["landlord_name"])){?>
-<main id="review">
+<main>
    <table border = "0" class="container" >
        <tr>
            <td class="info">
