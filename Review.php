@@ -246,6 +246,10 @@ session_start();
            </div>
            </td >
        </tr>
+       <tr>
+           <label>Do you wants to write a review?</label><br/>
+           <button><a href="write review.php">Create one <span>&#8594;</span></a></button><br/>
+       </tr>
    </table>
 </main>
 <?php } else { ?>
@@ -259,6 +263,8 @@ session_start();
         </div>
     </main>
 <?php } ?>
+
+
 <footer>
     <table>
         <tr>
