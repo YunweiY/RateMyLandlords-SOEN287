@@ -75,27 +75,50 @@ session_start();
         <form action="post">
             <label>How many starts are you rating for <?php if(isset($_SESSION["landlord"])) echo "value=\"{$_SESSION["first_name"]}\"";?></label><br/>
             <fieldset class="choice">
-                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                <input class="star star-5" id="star-5" type="radio" name="star" value = "5stars"/>
                 <label class="star star-5" for="star-5"></label>
-                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                <input class="star star-4" id="star-4" type="radio" name="star" value = "4stars"/>
                 <label class="star star-4" for="star-4"></label>
-                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                <input class="star star-3" id="star-3" type="radio" name="star" value = "3stars"/>
                 <label class="star star-3" for="star-3"></label>
-                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                <input class="star star-2" id="star-2" type="radio" name="star" value = "2stars"/>
                 <label class="star star-2" for="star-2"></label>
-                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                <input class="star star-1" id="star-1" type="radio" name="star" value = "1star"/>
                 <label class="star star-1" for="star-1"></label>
             </fieldset><br/>
             <label>What is your comment?</label><br/>
-            <textarea name="request" cols="50" rows="8" placeholder="Your Comment"></textarea>
+            <textarea name="request" cols="50" rows="8" placeholder="Your Comment" name = "comment"></textarea>
             <br/> <br/>
             <label>Thanks for your comment!</label>
             <br/> <br/>
-            <input type = "submit" value = "submit"/>
+            <input type = "submit" value = "submit" name = "submit"/>
             <input type = "reset" value = "start over"/>
         </form>
     </div>
+    <?php
+        if(iseet($_POST["submit"])){
+            if(iseet($_SESSION["star"])) {
+                $_SESSION["star"]=$_POST["star"];
+                $file = fopen('.txt', 'a') or die("Unable to open file!");
+                $info = $_SESSION["star"];
+                fwrite($file, $info);
 
+                if(iseet($_SESSION["comment"])) {
+                    $_SESSION["comment"]=$_POST["comment"];
+                    $info = "\t" . $_SESSION["comment"]."\n";
+                    fwrite($file, $info);
+
+                }
+                else{
+                    $info ="\n";
+                    fwrite($file, $info);
+                }
+
+                fclose($file);
+            }
+
+        }
+    ?>
 
 
 </main>
