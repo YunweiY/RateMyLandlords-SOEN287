@@ -22,6 +22,7 @@ if(isset($_SESSION["landlord_name"])){
         }
         $counter_line5++;
     }
+    fclose($lines);
     $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
     while (!feof($lines)) {
         $line = fgets($lines);
@@ -30,6 +31,7 @@ if(isset($_SESSION["landlord_name"])){
         }
         $counter_line4++;
     }
+    fclose($lines);
     $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
     while (!feof($lines)) {
         $line = fgets($lines);
@@ -38,6 +40,7 @@ if(isset($_SESSION["landlord_name"])){
         }
         $counter_line3++;
     }
+    fclose($lines);
     $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
     while (!feof($lines)) {
         $line = fgets($lines);
@@ -46,21 +49,23 @@ if(isset($_SESSION["landlord_name"])){
         }
         $counter_line2++;
     }
+    fclose($lines);
     $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
     while (!feof($lines)) {
         $line = fgets($lines);
-        if (strpos($line, "1stars") !== false) {
+        if (strpos($line, "1star") !== false) {
             $counter_star1++;
         }
         $counter_line1++;
     }
+    fclose($lines);
     $allline = $counter_line1-1;
     $all_count=$counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1;
     $average=0;
-    if($all_count!=0){
-        $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($all_count);
+    if($allline!=0){
+        $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($allline);
     }
-    fclose($lines);
+
 //read all comments of the landlord in to a dynamic array and display later on the page
     $comments=array();
     $lines=fopen("landlords/{$_SESSION['landlord_name']}.txt",'r') or die("Unable to open file!");
@@ -139,7 +144,7 @@ if(isset($_SESSION["landlord_name"])){
         }
         .bar-1{
             background-color: gold;
-            width: <?php  if($counter_star2==0) echo "0%"; else echo (($counter_star1/$allline)*100)."%";?>;
+            width: <?php  if($counter_star1==0) echo "0%"; else echo (($counter_star1/$allline)*100)."%";?>;
             height: 13px;
 
         }
@@ -205,7 +210,7 @@ if(isset($_SESSION["landlord_name"])){
                <span class="fa fa-star <?php if($average>4||$average==4) echo "checked"; ?>"></span >
                <span class="fa fa-star <?php if($average==5) echo "checked"; ?>" ></span ><br/>
 
-               <?php echo "<span> $average based on $allline reviews. </span>"?><br/><br/>
+               <?php echo "<span> ".round($average,2)." based on $allline reviews. </span>"?><br/><br/>
                <button><a href="Write%20review.php">Write a review <span>&#8594;</span></button>
            </td>
            <td>
