@@ -79,9 +79,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div id="introduction">
         <form method = "post">
             <label>What is the name of the landlord?</label>
-            <input type = "text" name = "landlord_name" size="50" placeholder="Name" required/><br/>
+            <input type = "text" name = "landlord_name" size="70" placeholder="Name" required/><br/>
             <label>What is the address of the landlord?</label>
-            <input type = "text" name = "landlord_address" size="50" placeholder="Example: 1455 De Maisonneuve Blvd. W." id="address" required/><br/>
+            <input type = "text" name = "landlord_address" size="70" placeholder="1455 De Maisonneuve Blvd. W. Montreal" id="address" required/><br/>
             <input type = "submit" value = "Confirm" onclick="check()"/>
         </form>
     </div>

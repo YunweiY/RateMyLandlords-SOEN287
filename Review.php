@@ -151,8 +151,11 @@ if(isset($_SESSION["landlord_name"])){
             color:#3c4359;
             text-decoration:none;
         }
-        .info{
+        span.info{
             font-size: 30pt;
+        }
+        td.info{
+            text-align: center;
         }
         div.comment{
             color:#3c4359;
@@ -185,7 +188,7 @@ if(isset($_SESSION["landlord_name"])){
 <main id="review">
    <table border = "0" class="container" >
        <tr>
-           <td>
+           <td class="info">
                <span class="info"><?php echo $_SESSION["landlord_name"];?></span><br/>
                <span class="info"><?php echo $_SESSION["landlord_address"];?></span><br/><br/>
 
