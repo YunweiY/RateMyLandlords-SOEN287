@@ -1,71 +1,73 @@
 <?php
 session_start();
-//read landlord_name.txt
-//count the ratings
-$counter_star5 =0;
-$counter_line5 =0;
-$counter_star4 =0;
-$counter_line4 =0;
-$counter_star3 =0;
-$counter_line3 =0;
-$counter_star2 =0;
-$counter_line2 =0;
-$counter_star1 =0;
-$counter_line1 =0;
-$allline=0;
-$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-while (!feof($lines)) {
-    $line = fgets($lines);
-    if (strpos($line, "5stars") !== false) {
-        $counter_star5++;
+if(isset($_SESSION["landlord_name"])){
+    //read landlord_name.txt
+    //count the ratings
+    $counter_star5 =0;
+    $counter_line5 =0;
+    $counter_star4 =0;
+    $counter_line4 =0;
+    $counter_star3 =0;
+    $counter_line3 =0;
+    $counter_star2 =0;
+    $counter_line2 =0;
+    $counter_star1 =0;
+    $counter_line1 =0;
+    $allline=0;
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "5stars") !== false) {
+            $counter_star5++;
+        }
+        $counter_line5++;
     }
-    $counter_line5++;
-}
-$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-while (!feof($lines)) {
-    $line = fgets($lines);
-    if (strpos($line, "4stars") !== false) {
-        $counter_star4++;
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "4stars") !== false) {
+            $counter_star4++;
+        }
+        $counter_line4++;
     }
-    $counter_line4++;
-}
-$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-while (!feof($lines)) {
-    $line = fgets($lines);
-    if (strpos($line, "3stars") !== false) {
-        $counter_star3++;
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "3stars") !== false) {
+            $counter_star3++;
+        }
+        $counter_line3++;
     }
-    $counter_line3++;
-}
-$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-while (!feof($lines)) {
-    $line = fgets($lines);
-    if (strpos($line, "2stars") !== false) {
-        $counter_star2++;
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "2stars") !== false) {
+            $counter_star2++;
+        }
+        $counter_line2++;
     }
-    $counter_line2++;
-}
-$lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
-while (!feof($lines)) {
-    $line = fgets($lines);
-    if (strpos($line, "1stars") !== false) {
-        $counter_star1++;
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "1stars") !== false) {
+            $counter_star1++;
+        }
+        $counter_line1++;
     }
-    $counter_line1++;
-}
-$allline = $counter_line1-1;
-$average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
-fclose($lines);
+    $allline = $counter_line1-1;
+    $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
+    fclose($lines);
 //read all comments of the landlord in to a dynamic array and display later on the page
-$comments=array();
-$lines=fopen("landlords/{$_SESSION['landlord_name']}.txt",'r') or die("Unable to open file!");
-while (!feof($lines)){
-    $line=fgets($lines);
-    $info=explode("\t",$line);
-    array_push($comments, $info);
+    $comments=array();
+    $lines=fopen("landlords/{$_SESSION['landlord_name']}.txt",'r') or die("Unable to open file!");
+    while (!feof($lines)){
+        $line=fgets($lines);
+        $info=explode("\t",$line);
+        array_push($comments, $info);
+    }
+    array_pop($comments);
+    fclose($lines);
 }
-array_pop($comments);
-fclose($lines);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -200,8 +202,8 @@ fclose($lines);
                <table style="margin:10pt;">
                    <tr>
                        <th width="10%"></th>
-                        <th width="200%"></th>
-                        <th></th>
+                       <th width="200%"></th>
+                       <th width="10%"></th>
                    </tr>
                    <tr>
                        <td><div>5 stars</div></td>
