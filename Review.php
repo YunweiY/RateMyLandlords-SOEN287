@@ -188,71 +188,67 @@ fclose($lines);
                <span class="info"><?php echo $_SESSION["landlord_address"];?></span><br/><br/>
 
                <span class="fa fa-star checked"></span >
-               <span class="fa fa-star checked <?php if($average>2||$average==2) echo "checked"; ?>"></span >
-               <span class="fa fa-star checked <?php if($average>3||$average==3) echo "checked"; ?>"></span >
-               <span class="fa fa-star checked <?php if($average>4||$average==4) echo "checked"; ?>"></span >
-               <span class="fa fa-star checked <?php if($average==5) echo "checked"; ?>" ></span ><br/>
+               <span class="fa fa-star <?php if($average>2||$average==2) echo "checked"; ?>"></span >
+               <span class="fa fa-star <?php if($average>3||$average==3) echo "checked"; ?>"></span >
+               <span class="fa fa-star <?php if($average>4||$average==4) echo "checked"; ?>"></span >
+               <span class="fa fa-star <?php if($average==5) echo "checked"; ?>" ></span ><br/>
 
                <?php echo "<span> $average based on $allline reviews. </span>"?><br/><br/>
                <button><a href="Write%20review.php">Write a review <span>&#8594;</span></button>
            </td>
            <td>
-               <div class="row">
-                   <div class="side">
-                       <div>5 star</div>
-                   </div>
-                   <div class="middle">
-                       <div class="bar-container">
-                           <div class="bar-5"></div><!-- 第五个bar -->
-                       </div>
-                   </div>
-                   <div class="side right">
-                       <div>
-                           <?php echo $counter_star5; ?>
-                       </div>
-                       <div class="side">
-                           <div>4 star</div>
-                       </div>
-                       <div class="middle">
+               <table style="margin:10pt;">
+                   <tr>
+                       <th width="10%"></th>
+                        <th width="200%"></th>
+                        <th></th>
+                   </tr>
+                   <tr>
+                       <td><div>5 stars</div></td>
+                       <td>
+                           <div class="bar-container">
+                               <div class="bar-5"></div>
+                           </div>
+                       </td>
+                       <td><div><?php echo $counter_star5; ?></div></td>
+                   </tr>
+                   <tr>
+                       <td><div>4 stars</div></td>
+                       <td>
                            <div class="bar-container">
                                <div class="bar-4"></div>
                            </div>
-                       </div>
-                       <div class="side right">
-                           <div>
-                               <?php echo $counter_star4; ?>
-                           </div>
-                       </div>
-                       <div class="side">
-                           <div>3 star</div>
-                       </div>
-                       <div class="middle">
+                       </td>
+                       <td><div><?php echo $counter_star4; ?></div></td>
+                   </tr>
+                   <tr>
+                       <td><div>3 stars</div></td>
+                       <td>
                            <div class="bar-container">
                                <div class="bar-3"></div>
                            </div>
-                       </div>
-                       <div class="side right">
-                           <div><?php echo $counter_star3; ?></div></div>
-
-                       <div class="side">
-                           <div>2 star</div>
-                       </div>
-                       <div class="middle">
+                       </td>
+                       <td><div><?php echo $counter_star3; ?></div></td>
+                   </tr>
+                   <tr>
+                       <td><div>2 stars</div></td>
+                       <td>
                            <div class="bar-container">
                                <div class="bar-2"></div>
                            </div>
-                       </div>
-                       <div class="side right">
-                           <div><?php echo $counter_star2; ?></div></div>
-                       <div class="side">
-                           <div>1 star</div>
-                       </div>
-                       <div class="middle">
+                       </td>
+                       <td><div><?php echo $counter_star2; ?></div></td>
+                   </tr>
+                   <tr>
+                       <td><div>1 star</div></td>
+                       <td>
                            <div class="bar-container">
                                <div class="bar-1"></div>
                            </div>
-                       </div>
-                       <div class="side right"><div><?php echo $counter_star1; ?></div></div>
+                       </td>
+                       <td><div><?php echo $counter_star1; ?></div></td>
+                   </tr>
+               </table>
            </td>
        </tr>
        <tr>
