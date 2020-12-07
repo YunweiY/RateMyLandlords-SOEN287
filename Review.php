@@ -297,7 +297,7 @@ if(isset($_SESSION["landlord_name"])){
                                //Create markers from the info
                                var newlatlng = L.latLng(myArr[0].lat, myArr[0].lon);
                                L.marker(newlatlng, { color: "green", radius: 10}).addTo(mymap).bindPopup(name).openPopup();
-                               mymap = L.map('mapid').setView([myArr[0].lat, myArr[0].lon], 14.5);
+                               mymap.panTo(new L.LatLng(myArr[0].lat, myArr[0].lon));
                            }
                        };
                        xmlhttp.open("GET", url, true);
