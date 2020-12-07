@@ -90,7 +90,8 @@ fclose($lines);
     </script>
     <style>
         #mapid {
-            height: 400px;
+            height: 300px;
+            width:100%;
         }
         table.container{
             width:100%;
@@ -183,8 +184,8 @@ fclose($lines);
    <table border = "0" class="container" >
        <tr>
            <td>
-               <span>Name: <?php echo $_SESSION["landlord_name"];?></span><br/>
-               <span>Address: <?php echo $_SESSION["landlord_address"];?></span><br/><br/>
+               <span class="info"><?php echo $_SESSION["landlord_name"];?></span><br/>
+               <span class="info"><?php echo $_SESSION["landlord_address"];?></span><br/><br/>
 
                <span class="fa fa-star checked"></span >
                <span class="fa fa-star checked <?php if($average>2||$average==2) echo "checked"; ?>"></span >
@@ -192,7 +193,8 @@ fclose($lines);
                <span class="fa fa-star checked <?php if($average>4||$average==4) echo "checked"; ?>"></span >
                <span class="fa fa-star checked <?php if($average==5) echo "checked"; ?>" ></span ><br/>
 
-               <?php echo "<span> $average based on $allline reviews. </span>"?>
+               <?php echo "<span> $average based on $allline reviews. </span>"?><br/><br/>
+               <button><a href="Write%20review.php">Write a review <span>&#8594;</span></button>
            </td>
            <td>
                <div class="row">
@@ -255,7 +257,7 @@ fclose($lines);
        </tr>
        <tr>
            <td colspan="2" ><!--map-->
-               <div id="mapid" style="width: 100%; height: 600px;"></div>
+               <div id="mapid"></div>
                <script type="text/javascript">
                    //Initialize Map
                    var ConcordiaLat = 45.495675;
@@ -294,6 +296,7 @@ fclose($lines);
                                //Create markers from the info
                                var newlatlng = L.latLng(myArr[0].lat, myArr[0].lon);
                                L.marker(newlatlng, { color: "green", radius: 10}).addTo(mymap).bindPopup(name).openPopup();
+                               mymap = L.map('mapid').setView([myArr[0].lat, myArr[0].lon], 14.5);
                            }
                        };
                        xmlhttp.open("GET", url, true);
