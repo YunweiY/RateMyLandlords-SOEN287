@@ -100,7 +100,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </nav>
 <main id="write_review">
     <div class="stars">
+<<<<<<< HEAD
         <form method="post">
+=======
+        <form action="" method = "post">
+>>>>>>> cc4bfe5122269cb64c4f666f54aeecbb53c81963
             <label>How many stars are you rating for <?php if(isset($_SESSION["landlord_name"])) echo $_SESSION["landlord_name"];?></label><br/>
             <fieldset class="choice">
                 <input class="star star-5" id="star-5" type="radio" name="star" value = "5stars"/>
