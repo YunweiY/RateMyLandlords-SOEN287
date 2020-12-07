@@ -100,14 +100,15 @@ session_start();
 <main id="review">
    <table border = "0" >
        <tr>
-           <td><span class="heading">Landlord <?php echo $_SESSION["landlord_name"];?></span>
+           <td>
+               <span>Name: <?php echo $_SESSION["landlord_name"];?></span><br/>
+               <span>Address: <?php echo $_SESSION["landlord_address"];?></span><br/><br/>
                <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span><!--要增加星数就check-->
-                <span class="fa fa-star"></span>
-                <p>Address: <?php echo $_SESSION["landlord_address"];?></p>
-                <p>4.1 average based on 254 reviews.</p>
+                <span class="fa fa-star"></span><br/>
+                <span>4.1 average based on 254 reviews.</span>
             </td>
            <td>
                <div class="row">
