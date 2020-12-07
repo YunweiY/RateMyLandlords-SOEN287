@@ -247,10 +247,12 @@ session_start();
            </td >
        </tr>
        <tr>
-           <label>Do you wants to write a review?</label><br/>
-           <button><a href="write review.php">Create one <span>&#8594;</span></a></button><br/>
+           <td><label>Do you wants to write a review?</label></td>
        </tr>
-   </table>
+       <tr>
+           <td><button><a href="write review.php">Create one <span>&#8594;</span></a></button></td>
+       </tr>
+    </table>
 </main>
 <?php } else { ?>
     <main id="frontPage">
