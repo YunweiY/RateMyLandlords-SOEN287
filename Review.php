@@ -56,6 +56,7 @@ if(isset($_SESSION["landlord_name"])){
     }
     $allline = $counter_line1-1;
     $all_count=$counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1;
+    $average=0;
     if($all_count!=0){
         $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($all_count);
     }
