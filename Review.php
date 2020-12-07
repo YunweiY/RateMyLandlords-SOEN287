@@ -111,31 +111,31 @@ if(isset($_SESSION["landlord_name"])){
         }
         .bar-5{
             background-color: gold;
-            width:<?php echo (($counter_star5/$allline)*100)."%";?>;
+            width:<?php if($counter_star5==0) echo "0%"; else echo (($counter_star5/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-4{
             background-color: gold;
-            width: <?php echo (($counter_star4/$allline)*100)."%";?>;
+            width: <?php if($counter_star4==0) echo "0%"; else echo (($counter_star4/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-3{
             background-color: gold;
-            width: <?php echo (($counter_star3/$allline)*100)."%";?>;
+            width: <?php if($counter_star3==0) echo "0%"; else echo (($counter_star3/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-2{
             background-color: gold;
-            width: <?php echo (($counter_star2/$allline)*100)."%";?>;
+            width: <?php if($counter_star2==0) echo "0%"; else echo (($counter_star2/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-1{
             background-color: gold;
-            width: <?php echo (($counter_star1/$allline)*100)."%";?>;
+            width: <?php  if($counter_star2==0) echo "0%"; else echo (($counter_star1/$allline)*100)."%";?>;
             height: 13px;
 
         }
