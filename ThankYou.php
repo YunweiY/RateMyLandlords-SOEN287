@@ -1,13 +1,11 @@
 <?php
-Session_start();
-$_SESSION["login"]=false;
-Session_destroy();
+session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign out</title>
+    <title>Thank you</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
 </head>
@@ -31,10 +29,10 @@ Session_destroy();
 <main id="frontPage">
     <br/>
     <br/>
+    <br/>
     <div id="introduction">
-        <p>You have signed out!</p>
+        <p>Thank you for your information!</p>
         <button><a href="FrontPage.php">Back to Homepage <span>&#8594;</span></a></button><br/>
-        <button><a href="Login.php">Log in by another account <span>&#8594;</span></a></button><br/>
     </div>
 </main>
 <footer>
@@ -48,4 +46,5 @@ Session_destroy();
     </table>
 </footer>
 </body>
+
 </html>

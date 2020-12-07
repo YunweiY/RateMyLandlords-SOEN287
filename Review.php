@@ -254,7 +254,8 @@ session_start();
         <br/>
         <div id="introduction">
             <p>Landlord not found!</p>
-            <button><a href="#">Create one <span>&#8594;</span></a></button><br/>
+            <button><a href="NewLandlord.php">Create one <span>&#8594;</span></a></button><br/>
+            <button><a href="FrontPage.php">Back to Homepage <span>&#8594;</span></a></button><br/>
         </div>
     </main>
 <?php } ?>

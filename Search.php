@@ -1,5 +1,7 @@
 <?php
 Session_start();
+unset($_SESSION["landlord_name"]);
+unset($_SESSION["landlord_address"]);
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $lines = fopen('landlords/landlords.txt','r');
     while (!feof($lines)){
@@ -41,7 +43,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             background-color: transparent;
         }
     </style>
-
 </head>
 <body>
 <nav>
@@ -70,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label>Search what you want!</label><br/>
                 <table class = "serach-field" border = "0" >
                    <tr>
-                    <td><input type="text" name="search" size="50"/></td>
+                    <td><input type="text" name="search" size="50" placeholder="Name/Address" required/></td>
                     <td>
                         <input type="image" src="pics/search_icon.png" alt="Submit" width="25">
                     </td>

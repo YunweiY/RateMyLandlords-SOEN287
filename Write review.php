@@ -1,5 +1,26 @@
 <?php
 session_start();
+if(iseet($_POST["submit"])){
+    if(iseet($_SESSION["star"])) {
+        $_SESSION["star"]=$_POST["star"];
+        $file = fopen("landlords/{$_SESSION['landlord_name']}.txt", 'a') or die("Unable to open file!");
+        $info = $_SESSION["star"];
+        fwrite($file, $info);
+
+        if(iseet($_SESSION["comment"])) {
+            $_SESSION["comment"]=$_POST["comment"];
+            $info = "\t" . $_SESSION["comment"]."\n";
+            fwrite($file, $info);
+
+        }
+        else{
+            $info ="\n";
+            fwrite($file, $info);
+        }
+        fclose($file);
+        header("Location: ThankYou.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -73,7 +94,7 @@ session_start();
 <main id="write_review">
     <div class="stars">
         <form action="post">
-            <label>How many starts are you rating for <?php if(isset($_SESSION["landlord"])) echo "value=\"{$_SESSION["first_name"]}\"";?></label><br/>
+            <label>How many starts are you rating for <?php if(isset($_SESSION["landlord_name"])) echo "value=\"{$_SESSION["landlord_name"]}\"";?></label><br/>
             <fieldset class="choice">
                 <input class="star star-5" id="star-5" type="radio" name="star" value = "5stars"/>
                 <label class="star star-5" for="star-5"></label>
@@ -95,32 +116,6 @@ session_start();
             <input type = "reset" value = "start over"/>
         </form>
     </div>
-    <?php
-        if(iseet($_POST["submit"])){
-            if(iseet($_SESSION["star"])) {
-                $_SESSION["star"]=$_POST["star"];
-                $file = fopen('.txt', 'a') or die("Unable to open file!");
-                $info = $_SESSION["star"];
-                fwrite($file, $info);
-
-                if(iseet($_SESSION["comment"])) {
-                    $_SESSION["comment"]=$_POST["comment"];
-                    $info = "\t" . $_SESSION["comment"]."\n";
-                    fwrite($file, $info);
-
-                }
-                else{
-                    $info ="\n";
-                    fwrite($file, $info);
-                }
-
-                fclose($file);
-            }
-
-        }
-    ?>
-
-
 </main>
 <footer>
     <table>
