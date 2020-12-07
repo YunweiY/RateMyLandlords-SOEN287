@@ -1,8 +1,68 @@
 <?php
+
 session_start();
-$name=$_SESSION["landlord_name"];
-$address=$_SESSION["landlord_address"];
+$counter_star5 =0;
+$counter_line5 =0;
+$counter_star4 =0;
+$counter_line4 =0;
+$counter_star3 =0;
+$counter_line3 =0;
+$counter_star2 =0;
+$counter_line2 =0;
+$counter_star1 =0;
+$counter_line1 =0;
+$allline=0;
 //read landlord_name.txt and count the rating
+?>
+<?php
+
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "5stars") !== false) {
+            $counter_star5++;
+        }
+        $counter_line5++;
+    }
+
+
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "4stars") !== false) {
+            $counter_star4++;
+        }
+        $counter_line4++;
+    }
+
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "3stars") !== false) {
+            $counter_star3++;
+        }
+        $counter_line3++;
+    }
+
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "2stars") !== false) {
+            $counter_star2++;
+    }
+        $counter_line2++;
+    }
+
+    $lines = fopen("landlords/{$_SESSION["landlord_name"]}.txt",'r');
+    while (!feof($lines)) {
+        $line = fgets($lines);
+        if (strpos($line, "1stars") !== false) {
+            $counter_star1++;
+        }
+        $counter_line1++;
+    }
+    $allline = $counter_line1-1;
+    $average = (5*$counter_star5+4*$counter_star4+3*$counter_star3+2*$counter_star2+$counter_star1)/($counter_star5+$counter_star4+$counter_star3+$counter_star2+$counter_star1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,72 +85,63 @@ $address=$_SESSION["landlord_address"];
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""><!--map-->
     var mymap =null;
     </script>
-    <style>
-        #mapid {
+    <style type="text/css">
+        #map {
             height: 400px;
         }
-        table.container{
-            width:100%;
-            table-layout: fixed;
-            color: #3c4359;
-        }
-        .fa {
-            font-size: 25px;
-        }
-        .bar-container {
-            width: 100%;
-            background-color: #f1f1f1;
-            text-align: center;
-            color: white;
-        }
-        .bar-5{
-            background-color: goldenrod;
-            width: 50%;
-            height: 13px;
+        
+    table{
+        width:100%;
+        table-layout: fixed;
+    }
+        
+    .fa {
+    font-size: 25px;
+    }
+    .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+    }
+    .bar-5{
+        background-color: gold;
+        width:<?php echo (($counter_star5/$counter_line5)*100)."%";?>;
+        height: 13px;
 
-        }
-        .bar-4{
-            background-color: goldenrod;
-            width: 10%;
-            height: 13px;
+    }
+    .bar-4{
+        background-color: gold;
+        width: <?php echo (($counter_star4/$counter_line4)*100)."%";?>;
+        height: 13px;
 
-        }
-        .bar-3{
-            background-color: goldenrod;
-            width: 20%;
-            height: 13px;
+    }
+    .bar-3{
+        background-color: gold;
+        width: <?php echo (($counter_star3/$counter_line3)*100)."%";?>;
+        height: 13px;
 
-        }
-        .bar-2{
-            background-color: goldenrod;
-            width: 40%;
-            height: 13px;
+    }
+    .bar-2{
+        background-color: gold;
+        width: <?php echo (($counter_star2/$counter_line2)*100)."%";?>;
+        height: 13px;
 
-        }
-        .bar-1{
-            background-color: goldenrod;
-            width: 70%;
-            height: 13px;
+    }
+    .bar-1{
+        background-color: gold;
+        width: <?php echo (($counter_star1/$counter_line1)*100)."%";?>;
+        height: 13px;
 
-        }
-        .checked {
-            color: red;
-        }
-        button{
-            border-radius: 90px;
-            size: 50px;
-            background-color: lavender;
-        }
-        button a{
-            color:#3c4359;
-            text-decoration:none;
-        }
-        .info{
-            font-size: 30pt;
-        }
+    }
+
+
+    .checked {
+    color: red;
+    }
     </style>
 </head>
-<body onload="addr_search()">
+<body>
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
@@ -109,18 +160,19 @@ $address=$_SESSION["landlord_address"];
 </nav>
 <?php if(isset($_SESSION["landlord_name"])){?>
 <main id="review">
-   <table border = "0" class="container" >
+   <table border = "0" >
        <tr>
            <td>
-               <span class="info"><?php echo $_SESSION["landlord_name"]; ?></span><br/>
-               <span class="info"><?php echo $_SESSION["landlord_address"]; ?></span><br/><br/>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span>
-               <span class="fa fa-star checked"></span><!--要增加星数就check-->
-               <span class="fa fa-star"></span><br/>
-               <span>4.1 average based on 254 reviews.</span><br/><br/>
-               <button><a href="Write review.php">Write a review <span>&#8594;</span></a></button>
+               <span>Name: <?php echo $_SESSION["landlord_name"];?></span><br/>
+               <span>Address: <?php echo $_SESSION["landlord_address"];?></span><br/><br/>
+
+               <span class="fa fa-star checked"></span >
+               <span class="fa fa-star checked <?php if($average>2||$average==2) echo "checked"; ?>"></span >
+               <span class="fa fa-star checked <?php if($average>3||$average==3) echo "checked"; ?>"></span >
+               <span class="fa fa-star checked <?php if($average>4||$average==4) echo "checked"; ?>"></span >
+               <span class="fa fa-star checked <?php if($average==5) echo "checked"; ?>" ></span ><br/>
+
+                <?php echo "<span> $average based on $allline reviews. </span>"?>
             </td>
            <td>
                <div class="row">
@@ -133,8 +185,9 @@ $address=$_SESSION["landlord_address"];
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION["star5"]; ?></div><!-- 5星人数 -->
-                </div>
+                    <div>
+                        <?php echo $counter_star5; ?>
+                    </div>
                 <div class="side">
                     <div>4 star</div>
                 </div>
@@ -144,7 +197,9 @@ $address=$_SESSION["landlord_address"];
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION["star4"]; ?></div></div>
+                    <div>
+                        <?php echo $counter_star4; ?>
+                    </div>
                 </div>
                 <div class="side">
                     <div>3 star</div>
@@ -155,7 +210,7 @@ $address=$_SESSION["landlord_address"];
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION["star3"]; ?></div></div>
+                    <div><?php echo $counter_star3; ?></div></div>
 
                 <div class="side">
                     <div>2 star</div>
@@ -166,7 +221,7 @@ $address=$_SESSION["landlord_address"];
                     </div>
                 </div>
                 <div class="side right">
-                    <div><?php echo $_SESSION["star2"]; ?></div></div>
+                    <div><?php echo $counter_star2; ?></div></div>
                 <div class="side">
                     <div>1 star</div>
                 </div>
@@ -175,16 +230,18 @@ $address=$_SESSION["landlord_address"];
                     <div class="bar-1"></div>
                     </div>
                 </div>
-                <div class="side right"><div><?php echo $_SESSION["star1"]; ?></div></div>
+                <div class="side right"><div><?php echo $counter_star1; ?></div></div>
            </td>
        </tr>
        <tr>
            <td colspan="2" ><!--map-->
                <div id="mapid" style="width: 100%; height: 600px;"></div>
                <script type="text/javascript">
+
                    //Initialize Map
                    var ConcordiaLat = 45.495675;
                    var ConcordiaLong = -73.578667;
+
                    //mapid is the id for your div element
                    //You can leave the rest as it is
                    mymap = L.map('mapid').setView([ConcordiaLat, ConcordiaLong], 14.5);
@@ -198,17 +255,16 @@ $address=$_SESSION["landlord_address"];
                        zoomOffset: -1
                    }).addTo(mymap);
 
+
                    //CODE TO CHANGE ADDRESS TO LATLONG
                    //https://www.w3schools.com/js/js_ajax_http_response.asp
                    //https://wiki.openstreetmap.org/wiki/FR:Nominatim
                    //There is also the reverse search from lat long to address
                    function addr_search()
                    {
-                       var address =<?php echo json_encode($_SESSION['landlord_address']); ?>;//address php
-                       address=address.slice(0, -1);
-                       var name =<?php echo json_encode($_SESSION['landlord_name']); ?>;//address php
+                       var addr =  $_SESSION["address"] ;//address php
                        var xmlhttp = new XMLHttpRequest();
-                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address;
+                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + addr;
                        xmlhttp.onreadystatechange = function()
                        {
                            if (this.readyState == 4 && this.status == 200)
@@ -216,17 +272,29 @@ $address=$_SESSION["landlord_address"];
                                var myArr = JSON.parse(this.responseText);
                                //myArr is an array of the matching addresses
                                //You can extract the lat long attributes
+
+
                                //Create markers from the info
+
                                var newlatlng = L.latLng(myArr[0].lat, myArr[0].lon);
-                               L.marker(newlatlng, { color: "green", radius: 10}).addTo(mymap).bindPopup(name).openPopup();
+
+                               L.circleMarker(newlatlng, { color: "green", radius: 10}).addTo(mymap);
+
+
                            }
                        };
                        xmlhttp.open("GET", url, true);
                        xmlhttp.send();
                    }
+
+
+
                </script>
+
+
            </td>
        </tr>
+
        <tr>
            <td colspan="2" >
            <div>
@@ -247,6 +315,12 @@ $address=$_SESSION["landlord_address"];
            </div>
            </td >
        </tr>
+       <tr>
+           <td><label>Do you wants to write a review?</label></td>
+       </tr>
+       <tr>
+           <td><button><a href="write review.php">Create one <span>&#8594;</span></a></button></td>
+       </tr>
     </table>
 </main>
 <?php } else { ?>
@@ -260,6 +334,8 @@ $address=$_SESSION["landlord_address"];
         </div>
     </main>
 <?php } ?>
+
+
 <footer>
     <table>
         <tr>
