@@ -1,5 +1,6 @@
 <?php
 session_start();
+//read landlord_name.txt and count the rating
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,7 +108,6 @@ session_start();
                 <span class="fa fa-star"></span>
                 <p>4.1 average based on 254 reviews.</p>
             </td>
-
            <td>
                <div class="row">
                     <div class="side">

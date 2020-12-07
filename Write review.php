@@ -1,12 +1,12 @@
 <?php
 session_start();
-if(isset($_POST["submit"])){
-    if(isset($_SESSION["star"])) {
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST["star"])) {
         $_SESSION["star"]=$_POST["star"];
         $file = fopen("landlords/{$_SESSION['landlord_name']}.txt", 'a') or die("Unable to open file!");
         $info = $_SESSION["star"];
         fwrite($file, $info);
-        if(isset($_SESSION["comment"])) {
+        if(isset($_POST["comment"])) {
             $_SESSION["comment"]=$_POST["comment"];
             $info = "\t" . $_SESSION["comment"]."\n";
             fwrite($file, $info);
@@ -100,7 +100,7 @@ if(isset($_POST["submit"])){
 </nav>
 <main id="write_review">
     <div class="stars">
-        <form action="post">
+        <form method="post">
             <label>How many stars are you rating for <?php if(isset($_SESSION["landlord_name"])) echo $_SESSION["landlord_name"];?></label><br/>
             <fieldset class="choice">
                 <input class="star star-5" id="star-5" type="radio" name="star" value = "5stars"/>
@@ -115,12 +115,12 @@ if(isset($_POST["submit"])){
                 <label class="star star-1" for="star-1"></label>
             </fieldset><br/>
             <label>What is your comment?</label><br/>
-            <textarea name="request" cols="50" rows="8" placeholder="Your Comment" name = "comment"></textarea>
+            <textarea cols="50" rows="8" placeholder="Your Comment" name = "comment"></textarea>
             <br/> <br/>
             <label>Thanks for your comment!</label>
             <br/> <br/>
-            <input type = "submit" value = "submit" name = "submit"/>
-            <input type = "reset" value = "start over"/>
+            <input type = "submit" value = "Submit"/>
+            <input type = "reset" value = "Start over"/>
         </form>
     </div>
 </main>
