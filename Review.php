@@ -109,31 +109,31 @@ fclose($lines);
         }
         .bar-5{
             background-color: gold;
-            width:<?php echo (($counter_star5/$counter_line5)*100)."%";?>;
+            width:<?php echo (($counter_star5/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-4{
             background-color: gold;
-            width: <?php echo (($counter_star4/$counter_line4)*100)."%";?>;
+            width: <?php echo (($counter_star4/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-3{
             background-color: gold;
-            width: <?php echo (($counter_star3/$counter_line3)*100)."%";?>;
+            width: <?php echo (($counter_star3/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-2{
             background-color: gold;
-            width: <?php echo (($counter_star2/$counter_line2)*100)."%";?>;
+            width: <?php echo (($counter_star2/$allline)*100)."%";?>;
             height: 13px;
 
         }
         .bar-1{
             background-color: gold;
-            width: <?php echo (($counter_star1/$counter_line1)*100)."%";?>;
+            width: <?php echo (($counter_star1/$allline)*100)."%";?>;
             height: 13px;
 
         }
