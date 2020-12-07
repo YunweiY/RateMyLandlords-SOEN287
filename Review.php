@@ -1,5 +1,7 @@
 <?php
 session_start();
+$name=$_SESSION["landlord_name"];
+$address=$_SESSION["landlord_address"];
 //read landlord_name.txt and count the rating
 ?>
 <!DOCTYPE html>
@@ -23,63 +25,72 @@ session_start();
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""><!--map-->
     var mymap =null;
     </script>
-    <style type="text/css">
-        #map {
+    <style>
+        #mapid {
             height: 400px;
         }
-        
-    table{
-        width:100%;
-        table-layout: fixed;
-    }
-        
-    .fa {
-    font-size: 25px;
-    }
-    .bar-container {
-        width: 100%;
-        background-color: #f1f1f1;
-        text-align: center;
-        color: white;
-    }
-    .bar-5{
-        background-color: gold;
-        width: 50%;
-        height: 13px;
+        table.container{
+            width:100%;
+            table-layout: fixed;
+            color: #3c4359;
+        }
+        .fa {
+            font-size: 25px;
+        }
+        .bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            color: white;
+        }
+        .bar-5{
+            background-color: goldenrod;
+            width: 50%;
+            height: 13px;
 
-    }
-    .bar-4{
-        background-color: gold;
-        width: 10%;
-        height: 13px;
+        }
+        .bar-4{
+            background-color: goldenrod;
+            width: 10%;
+            height: 13px;
 
-    }
-    .bar-3{
-        background-color: gold;
-        width: 20%;
-        height: 13px;
+        }
+        .bar-3{
+            background-color: goldenrod;
+            width: 20%;
+            height: 13px;
 
-    }
-    .bar-2{
-        background-color: gold;
-        width: 40%;
-        height: 13px;
+        }
+        .bar-2{
+            background-color: goldenrod;
+            width: 40%;
+            height: 13px;
 
-    }
-    .bar-1{
-        background-color: gold;
-        width: 70%;
-        height: 13px;
+        }
+        .bar-1{
+            background-color: goldenrod;
+            width: 70%;
+            height: 13px;
 
-    }
-
-
-    .checked {
-    color: red;
-    }
+        }
+        .checked {
+            color: red;
+        }
+        button{
+            border-radius: 90px;
+            size: 50px;
+            background-color: lavender;
+        }
+        button a{
+            color:#3c4359;
+            text-decoration:none;
+        }
+        .info{
+            font-size: 30pt;
+        }
     </style>
 </head>
-<body>
+<body onload="addr_search()">
 <nav>
     <a href="FrontPage.php" id="logo"><img src="pics/logo-sided-inverted.png" height="30"></a>
     <a href="FrontPage.php">Home</a>
@@ -98,17 +109,18 @@ session_start();
 </nav>
 <?php if(isset($_SESSION["landlord_name"])){?>
 <main id="review">
-   <table border = "0" >
+   <table border = "0" class="container" >
        <tr>
            <td>
-               <span>Name: <?php echo $_SESSION["landlord_name"];?></span><br/>
-               <span>Address: <?php echo $_SESSION["landlord_address"];?></span><br/><br/>
+               <span class="info"><?php echo $_SESSION["landlord_name"]; ?></span><br/>
+               <span class="info"><?php echo $_SESSION["landlord_address"]; ?></span><br/><br/>
                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span><!--要增加星数就check-->
-                <span class="fa fa-star"></span><br/>
-                <span>4.1 average based on 254 reviews.</span>
+               <span class="fa fa-star checked"></span>
+               <span class="fa fa-star checked"></span>
+               <span class="fa fa-star checked"></span><!--要增加星数就check-->
+               <span class="fa fa-star"></span><br/>
+               <span>4.1 average based on 254 reviews.</span><br/><br/>
+               <button><a href="Write review.php">Write a review <span>&#8594;</span></a></button>
             </td>
            <td>
                <div class="row">
@@ -170,11 +182,9 @@ session_start();
            <td colspan="2" ><!--map-->
                <div id="mapid" style="width: 100%; height: 600px;"></div>
                <script type="text/javascript">
-
                    //Initialize Map
                    var ConcordiaLat = 45.495675;
                    var ConcordiaLong = -73.578667;
-
                    //mapid is the id for your div element
                    //You can leave the rest as it is
                    mymap = L.map('mapid').setView([ConcordiaLat, ConcordiaLong], 14.5);
@@ -188,16 +198,17 @@ session_start();
                        zoomOffset: -1
                    }).addTo(mymap);
 
-
                    //CODE TO CHANGE ADDRESS TO LATLONG
                    //https://www.w3schools.com/js/js_ajax_http_response.asp
                    //https://wiki.openstreetmap.org/wiki/FR:Nominatim
                    //There is also the reverse search from lat long to address
                    function addr_search()
                    {
-                       var addr =  $_SESSION["address"] ;//address php
+                       var address =<?php echo json_encode($_SESSION['landlord_address']); ?>;//address php
+                       address=address.slice(0, -1);
+                       var name =<?php echo json_encode($_SESSION['landlord_name']); ?>;//address php
                        var xmlhttp = new XMLHttpRequest();
-                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + addr;
+                       var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address;
                        xmlhttp.onreadystatechange = function()
                        {
                            if (this.readyState == 4 && this.status == 200)
@@ -205,29 +216,17 @@ session_start();
                                var myArr = JSON.parse(this.responseText);
                                //myArr is an array of the matching addresses
                                //You can extract the lat long attributes
-
-
                                //Create markers from the info
-
                                var newlatlng = L.latLng(myArr[0].lat, myArr[0].lon);
-
-                               L.circleMarker(newlatlng, { color: "green", radius: 10}).addTo(mymap);
-
-
+                               L.marker(newlatlng, { color: "green", radius: 10}).addTo(mymap).bindPopup(name).openPopup();
                            }
                        };
                        xmlhttp.open("GET", url, true);
                        xmlhttp.send();
                    }
-
-
-
                </script>
-
-
            </td>
        </tr>
-
        <tr>
            <td colspan="2" >
            <div>
@@ -248,12 +247,6 @@ session_start();
            </div>
            </td >
        </tr>
-       <tr>
-           <td><label>Do you wants to write a review?</label></td>
-       </tr>
-       <tr>
-           <td><button><a href="write review.php">Create one <span>&#8594;</span></a></button></td>
-       </tr>
     </table>
 </main>
 <?php } else { ?>
@@ -267,8 +260,6 @@ session_start();
         </div>
     </main>
 <?php } ?>
-
-
 <footer>
     <table>
         <tr>
