@@ -2,7 +2,7 @@
 Session_start();
 $exist=true;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $lines = fopen('userdata/accounts.txt','r');
+    $lines = fopen('users/accounts.txt','r');
     while (!feof($lines)){
         $line=fgets($lines);
         if(strpos($line, $_POST["email"]) !== false){
