@@ -1,6 +1,8 @@
 <?php
 Session_start();
 $_SESSION["login"]=false;
+setcookie("name", $_POST["username"], time()-3600*24*365,"/");
+setcookie("login", true, time()-3600*24*365,"/");
 Session_destroy();
 ?>
 <!DOCTYPE html>

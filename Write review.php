@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Write a review</title>
     <meta charset =  “utf-8” />
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
     <style>
 
         div.stars {

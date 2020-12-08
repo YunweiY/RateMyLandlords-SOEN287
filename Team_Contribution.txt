@@ -2,8 +2,8 @@ Congratulations.php: Yunwei Yang
 ContactSent.php: Eric Lemieux
 ContactUs.php: Eric Lemieux, Yutao Fu(dropped)
 ForgetPassword.php: Yunwei Yang
-FrontPage.php: Eric Lemieux, Yunwei Yang, Yutao Fu(dropped)
-Login.php: Eric Lemieux, Yunwei Yang
+FrontPage.php: Yunwei Yang, Yutao Fu(dropped)
+Login.php: Yunwei Yang
 MyAccount.php: Yifan He, Yunwei Yang
 NewLandlord.php: Yifan He, Yunwei Yang
 PasswordSent.php: Yunwei Yang

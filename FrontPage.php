@@ -1,5 +1,26 @@
 <?php
 Session_start();
+if(!isset($_SESSION["login"])&&isset($_COOKIE["name"])){
+    $_SESSION["name"]=$_COOKIE["name"];
+    $_SESSION["login"]=true;
+    $lines = fopen('users/accounts.txt','r');
+    while (!feof($lines)){
+        $line=fgets($lines);
+        if(strpos($line, $_SESSION["name"]) !== false){
+            $info=explode("\t",$line);
+            $_SESSION["password"]=$info[1];
+            $_SESSION["first_name"]=$info[2];
+            $_SESSION["last_name"]=$info[3];
+            $_SESSION["email"]=$info[4];
+            $_SESSION["phone"]=$info[5];
+            $_SESSION["address"]=$info[6];
+            $_SESSION["age"]=$info[7];
+            $_SESSION["gender"]=$info[8];
+            $_SESSION["identity"]=$info[9];
+        }
+    }
+    fclose($lines);
+}
 /*
 $path = null;
 $timestamp = null;
@@ -72,10 +93,6 @@ $lines = fopen($path,'r');
         $counter_line1++;
     }
 	*/
-	
-	
-	
-	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,8 +101,7 @@ $lines = fopen($path,'r');
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- start的css -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <nav>
@@ -108,14 +124,14 @@ $lines = fopen($path,'r');
     <br/>
     <br/>
     <div id="introduction">
-         <p>Welcome to Rate My LandLords!</p>
+        <p>Welcome to Rate My LandLords!</p>
         <button><a href="Search.php">Search a landlord <span>&#8594;</span></a></button><br/>
     </div>
-	<!--	
+    <!--
 	<div id="topReview">
 		<p>Recent reviews</p>
 		<span class="fa fa-star checked"></span >
-		
+
 	</div>
 	-->
 </main>

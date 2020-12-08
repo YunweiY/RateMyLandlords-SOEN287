@@ -19,6 +19,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION["gender"]=$info[8];
             $_SESSION["identity"]=$info[9];
             fclose($lines);
+            //create cookie
+            if($_POST["remember"]="remember"){
+                setcookie("name", $_POST["username"], time()+3600*24*365,"/");
+                setcookie("login", true, time()+3600*24*365,"/");
+            }
             header("location: MyAccount.php");
         }
     }
@@ -81,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo"<br/>";
         }
         ?>
-        <label><input type="checkbox" name="remember"> Remember me</label><br/><br/>
+        <label><input type="checkbox" name="remember" value="remember"> Remember me</label><br/><br/>
         <input type="submit" name="login" value="Login"/>
         <br/><br/>
         <span id="password">
