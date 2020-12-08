@@ -32,20 +32,22 @@ Session_start();
     <p id="smallWordsForContactUs">Please fill the form below</p>
     </fieldset>
     <br/>
+	<form method="post" action="ContactSent.php">
     <table>
     <tr>
-        <td><label><input class="contactInfo" type="text" placeholder="Last name"></label></td>
-        <td><label><input class="contactInfo" type="text" placeholder="First name"></label></td>
+        <td><label><input class="contactInfo"  type="text" name="LastName" placeholder="Last name"></label></td>
+        <td><label><input class="contactInfo" name="FirstName" type="text" placeholder="First name"></label></td>
     </tr>
     <tr>
-        <td><label><input class="contactInfo" type="text" placeholder="Email address"></label></td>
-        <td><label><input class="contactInfo" type="text" placeholder="Phone number"></label></td>
+        <td><label><input class="contactInfo" name="email_contact" type="text" placeholder="Email address"></label></td>
+        <td><label><input class="contactInfo" name="phone" type="text" placeholder="Phone number"></label></td>
     </tr>
 </table><br/><br/>
-    <label><textarea type="text" placeholder="Why are you trying to contact us?"></textarea></label><br/><br/>
+    <label><textarea type="text" name="message" placeholder="Why are you trying to contact us?"></textarea></label><br/><br/>
     <p>Are you a robot?</p>
     <label><input id="robotChecking" type="text" placeholder="Say 'No'"></label><br/><br/>
     <button>Send to us!</button><br/><br/>
+	</form>
 </main>
 <footer>
     <table>
