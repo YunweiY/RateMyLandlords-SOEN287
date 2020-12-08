@@ -25,15 +25,14 @@ $mail->Port = 587;
 $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication
-$mail->Username = 'ericlemieux1006@gmail.com';
+$mail->Username = 'yunweiy0211@gmail.com';
 //Password to use for SMTP authentication
-$mail->Password = 'Adrianna0l';
+$mail->Password = 'Yang0211@';
 //Set who the message is to be sent from
-$mail->setFrom('ericlemieux1006@gmail.com', 'Yunwei Yang');
+$mail->setFrom('yunweiy0211@gmail.com', 'Rate My Landlords team');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to email and name
-$mail->addAddress("yunweiy0211@gmail.com", "Yunwei Yang");
 $mail->addAddress("{$_POST["email_contact"]}", "{$_POST["FirstName"]}"." "."{$_POST["LastName"]}");
 //Name is optional
 //$mail->addAddress('recepientid@domain.com');
@@ -52,9 +51,13 @@ $mail->isHTML(true);
 $mail->Subject = 'Rate my Landlord: Request sent';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->Body = "Message from: ".$_POST["LastName"].", ".$_POST["FirstName"]."<br>".
-"Email: ".$_POST["email_contact"]."<br>".
-"Phone number: ".$_POST["phone"]."<br>".
+$mail->Body = "Dear ".$_POST["LastName"]." ".$_POST["FirstName"].",<br/><br/>".
+"We have received your request and will get back to you as soon as possible.<br/><br/>".
+"Best regards,<br/>".
+"Rate My Landlords team<br/><br/>".
+"Name: ".$_POST["LastName"].", ".$_POST["FirstName"]."<br/>".
+"Email: ".$_POST["email_contact"]."<br/>".
+"Phone number: ".$_POST["phone"]."<br/>".
 "Message: ".$_POST["message"];
 //You may add plain text version using AltBody
 //$mail->AltBody = "This is the plain text version of the email content";
@@ -100,7 +103,7 @@ Session_destroy();
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
-                echo 'We have received your request and will get back to you as soon as possible!';
+                echo 'We have received your request!';
             }
             ?>
         </p>

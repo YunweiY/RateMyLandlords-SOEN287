@@ -29,7 +29,7 @@ $mail->Username = 'yunweiy0211@gmail.com';
 //Password to use for SMTP authentication
 $mail->Password = 'Yang0211@';
 //Set who the message is to be sent from
-$mail->setFrom('yunweiy0211@gmail.com', 'Yunwei Yang');
+$mail->setFrom('yunweiy0211@gmail.com', 'Rate My Landlords team');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to email and name
@@ -51,7 +51,10 @@ $mail->isHTML(true);
 $mail->Subject = 'Rate my Landlord: Password';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-$mail->Body = "Your password is ".$_SESSION["password"];
+$mail->Body = "Dear user,<br/><br/>".
+"Your password is <b>".$_SESSION["password"]."</b>.<br/><br/>".
+"Best regards,<br/>".
+"Rate My Landlords team";
 //You may add plain text version using AltBody
 //$mail->AltBody = "This is the plain text version of the email content";
 //send the message, check for errors
@@ -96,7 +99,7 @@ Session_destroy();
             if (!$mail->send()) {
                 echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
-                echo 'Message was sent Successfully!';
+                echo 'Your password is sent.';
             }
             ?>
         </p>
