@@ -63,6 +63,7 @@ $mail->Body = "Dear user,<br/><br/>".
 //} else {
 //    echo 'Message was sent Successfully!';
 //}
+Session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
