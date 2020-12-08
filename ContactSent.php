@@ -33,7 +33,6 @@ $mail->setFrom('yunweiy0211@gmail.com', 'Rate My Landlords team');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to email and name
-$mail->addAddress('yunweiy0211@gmail.com', 'Rate My Landlords team');
 $mail->addAddress("{$_POST["email_contact"]}", "{$_POST["FirstName"]}"." "."{$_POST["LastName"]}");
 //Name is optional
 //$mail->addAddress('recepientid@domain.com');
@@ -55,11 +54,8 @@ $mail->Subject = 'Rate my Landlord: Request sent';
 $mail->Body = "Dear ".$_POST["LastName"]." ".$_POST["FirstName"].",<br/><br/>".
 "We have received your request and will get back to you as soon as possible.<br/><br/>".
 "Best regards,<br/>".
-"Rate My Landlords team<br/><br/>".
-"Name: ".$_POST["LastName"].", ".$_POST["FirstName"]."<br/>".
-"Email: ".$_POST["email_contact"]."<br/>".
-"Phone number: ".$_POST["phone"]."<br/>".
-"Message: ".$_POST["message"];
+"Rate My Landlords team<br/><br/>";
+$mail->send();
 //You may add plain text version using AltBody
 //$mail->AltBody = "This is the plain text version of the email content";
 //send the message, check for errors
@@ -68,13 +64,22 @@ $mail->Body = "Dear ".$_POST["LastName"]." ".$_POST["FirstName"].",<br/><br/>".
 //} else {
 //    echo 'Message was sent Successfully!';
 //}
-Session_destroy();
+//send a email to inform admin
+$mail->ClearAddresses();
+$mail->addAddress('yunweiy0211@gmail.com', 'Rate My Landlords team');
+$mail->addAddress('hd990523@gmail.com', 'Rate My Landlords team');
+//$mail->addAddress('ericlemieux1006@gmail.com', 'Rate My Landlords team');
+$mail->Subject = 'New Request';
+$mail->Body = "Request from: ".$_POST["LastName"].", ".$_POST["FirstName"]."<br/>".
+    "Email: ".$_POST["email_contact"]."<br/>".
+    "Phone number: ".$_POST["phone"]."<br/>".
+    "Message: ".$_POST["message"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Password sent</title>
+    <title>Request sent</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather" />
 </head>
