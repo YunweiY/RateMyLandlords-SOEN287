@@ -33,6 +33,7 @@ $mail->setFrom('yunweiy0211@gmail.com', 'Rate My Landlords team');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to email and name
+$mail->addAddress('yunweiy0211@gmail.com', 'Rate My Landlords team');
 $mail->addAddress("{$_POST["email_contact"]}", "{$_POST["FirstName"]}"." "."{$_POST["LastName"]}");
 //Name is optional
 //$mail->addAddress('recepientid@domain.com');
