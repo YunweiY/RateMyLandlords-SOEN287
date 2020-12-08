@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION["identity"]=$info[9];
             fclose($lines);
             //create cookie
-            if($_POST["remember"]="remember"){
+            if($_POST["remember"]==="remember"){
                 setcookie("name", $_POST["username"], time()+3600*24*365,"/");
                 setcookie("login", true, time()+3600*24*365,"/");
             }
