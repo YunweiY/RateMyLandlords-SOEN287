@@ -7,7 +7,7 @@ Login.php: Eric Lemieux, Yunwei Yang
 MyAccount.php: Yifan He, Yunwei Yang
 NewLandlord.php: Yifan He, Yunwei Yang
 PasswordSent.php: Yunwei Yang
-Review.php: Yifan He, Yunwei Yang
+Review.php: Eric Lemieux, Yifan He, Yunwei Yang
 Search.php: Yifan He, Yunwei Yang
 SignOut.php: Yunwei Yang
 Signup.php: Yunwei Yang
