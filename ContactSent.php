@@ -72,7 +72,7 @@ $mail->addAddress('hd990523@gmail.com', 'Rate My Landlords team');
 $mail->Subject = 'New Request';
 $mail->Body = "Request from: ".$_POST["LastName"].", ".$_POST["FirstName"]."<br/>".
     "Email: ".$_POST["email_contact"]."<br/>".
-    "Phone number: ".$_POST["phone"]."<br/>".
+    "Phone number: ".$_POST["phone_contact"]."<br/>".
     "Message: ".$_POST["message"];
 ?>
 <!DOCTYPE html>

@@ -40,7 +40,7 @@ Session_start();
     </tr>
     <tr>
         <td><label><input class="contactInfo" name="email_contact" type="text" placeholder="Email address"></label></td>
-        <td><label><input class="contactInfo" name="phone" type="text" placeholder="Phone number"></label></td>
+        <td><label><input class="contactInfo" name="phone_contact" type="text" placeholder="Phone number"></label></td>
     </tr>
 </table><br/><br/>
     <label><textarea type="text" name="message" placeholder="Why are you trying to contact us?"></textarea></label><br/><br/>
